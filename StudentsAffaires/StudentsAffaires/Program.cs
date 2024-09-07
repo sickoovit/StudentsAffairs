@@ -3,24 +3,31 @@ using StudentsAffaires.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Configuration.AddUserSecrets<Program>();
-
-string connectionStringConfigurationKey = "StudentsAffairesDbConnectionString";
-string connectionString = builder.Configuration[connectionStringConfigurationKey] ??
-    throw new ArgumentNullException(
-        paramName: "connectionStringConfigurationKey",
-        message: "Connection String Couldn't Be Resolved. Configuration Key may be not valid"
-    );
-
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
+builder.Configuration.AddUserSecrets<Program>();
+
+string connectionStringUserDbConfigurationKey = "UserDbConnectionString";
+string connectionStringUserDb = builder.Configuration[connectionStringUserDbConfigurationKey] ??
+    throw new ArgumentNullException(
+        paramName: "connectionStringUserDbConfigurationKey",
+        message: "Connection String Couldn't Be Resolved. Configuration Key may be not valid"
+    );
+
+string connectionStringAssignmentDbConfigurationKey = "AssignmentDbConnectionString";
+string connectionStringAssignmentDb = builder.Configuration[connectionStringAssignmentDbConfigurationKey] ??
+    throw new ArgumentNullException(
+        paramName: "connectionStringAssignmentDbConfigurationKey",
+        message: "Connection String Couldn't Be Resolved. Configuration Key may be not valid"
+    );
+
 builder.Services.AddDbContext<UserDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseSqlServer(connectionStringUserDb));
 
 builder.Services.AddDbContext<AssignmentDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseSqlServer(connectionStringAssignmentDb));
 
 var app = builder.Build();
 
