@@ -1,11 +1,7 @@
-﻿namespace StudentsAffaires;
+﻿namespace StudentsAffaires.DbContexts;
 
-public class ApplicationDbContext : DbContext
+public class UsersDbContext : DbContext
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options)
-    {
-    }
     public DbSet<User> Users { get; set; }
     public DbSet<Student> Students { get; set; }
     public DbSet<Tutor> Tutors { get; set; }
