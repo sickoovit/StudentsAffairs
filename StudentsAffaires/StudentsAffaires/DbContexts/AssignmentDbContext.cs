@@ -2,6 +2,10 @@
 
 public class AssignmentDbContext : DbContext
 {
+    public AssignmentDbContext(DbContextOptions<AssignmentDbContext> options)
+        : base(options)
+    {
+    }
     public DbSet<Assignment> Assignments { get; set; }
     public DbSet<AssignmentSubmission> AssignmentSubmissions { get; set; }
 
