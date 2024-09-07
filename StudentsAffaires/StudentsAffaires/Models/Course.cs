@@ -12,6 +12,7 @@ public class Course
 
     // Relationships
     public List<Material>? Materials { get; set; } // Materials associated with the course, such as videos, PDFs, or other resources.
+    public List<Assignment>? Assignments { get; set; } // List of assignments associated with the course.
     //public List<Module> Modules { get; set; }
     //public List<Lesson> Lessons { get; set; }
     //public int InstructorId { get; set; }
