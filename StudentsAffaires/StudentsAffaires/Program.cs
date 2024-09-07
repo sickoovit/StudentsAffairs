@@ -7,6 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
+builder.Services.AddDbContext<UserDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("UserDatabase")));
+
+builder.Services.AddDbContext<AssignmentDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AssignmentDatabase")));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
