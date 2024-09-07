@@ -3,7 +3,14 @@ using StudentsAffaires.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+builder.Configuration.AddUserSecrets<Program>();
+
+string connectionStringConfigurationKey = "StudentsAffairesDbConnectionString";
+string connectionString = builder.Configuration[connectionStringConfigurationKey] ??
+    throw new ArgumentNullException(
+        paramName: "connectionStringConfigurationKey",
+        message: "Connection String Couldn't Be Resolved. Configuration Key may be not valid"
+    );
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
