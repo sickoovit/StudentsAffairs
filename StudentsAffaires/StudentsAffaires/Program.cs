@@ -3,15 +3,17 @@ using StudentsAffaires.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
 builder.Services.AddDbContext<UserDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("UserDatabase")));
+    options.UseSqlServer(connectionString));
 
 builder.Services.AddDbContext<AssignmentDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("AssignmentDatabase")));
+    options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
