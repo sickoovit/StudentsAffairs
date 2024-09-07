@@ -1,6 +1,6 @@
 ﻿namespace StudentsAffaires.DbContexts;
 
-public class UsersDbContext : DbContext
+public class UserDbContext : DbContext
 {
     public DbSet<User> Users { get; set; }
     public DbSet<Student> Students { get; set; }

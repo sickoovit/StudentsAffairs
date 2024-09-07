@@ -1,6 +1,6 @@
 ﻿namespace StudentsAffaires.DbContexts;
 
-public class AssignmentsDbContext : DbContext
+public class AssignmentDbContext : DbContext
 {
     public DbSet<Assignment> Assignments { get; set; }
     public DbSet<AssignmentSubmission> AssignmentSubmissions { get; set; }
