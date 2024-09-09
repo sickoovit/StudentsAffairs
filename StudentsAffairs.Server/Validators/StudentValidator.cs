@@ -1,4 +1,4 @@
-﻿namespace StudentsAffairs.Validators;
+﻿namespace StudentsAffairs.Server.Validators;
 
 public class StudentValidator : AbstractValidator<Student>
 {
