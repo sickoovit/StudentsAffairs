@@ -1,4 +1,4 @@
-﻿namespace StudentsAffairs.DbContexts;
+﻿namespace StudentsAffairs.Server.DbContexts;
 
 public class AssignmentDbContext : DbContext
 {

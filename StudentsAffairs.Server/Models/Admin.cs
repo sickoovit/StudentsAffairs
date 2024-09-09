@@ -1,4 +1,4 @@
-﻿namespace StudentsAffairs.Models;
+﻿namespace StudentsAffairs.Server.Models;
 
 public class Admin : User
 {
