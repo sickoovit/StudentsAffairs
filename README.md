@@ -61,7 +61,7 @@ Launch the application using Visual Studio or the .NET CLI:
   ```bash
   dotnet run
   ```
-Navigate to http://localhost:5000 in your browser to access the application.
+Navigate to http://localhost:7205 in your browser to access the application.
 
 ## Usage
 - Admin: Manage users, courses, and assignments.
