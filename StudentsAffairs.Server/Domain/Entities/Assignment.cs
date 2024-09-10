@@ -24,7 +24,7 @@ public class Assignment
     public decimal MaxScore { get; set; }
 
     // The course to which this assignment belongs.
-    public int CourseId { get; set; }
+    public Guid CourseId { get; set; }
 
     // Navigation property to the course this assignment belongs to.
     public Course? Course { get; set; }
