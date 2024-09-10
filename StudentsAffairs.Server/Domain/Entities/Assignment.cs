@@ -1,4 +1,4 @@
-﻿namespace StudentsAffairs.Server.Models;
+﻿namespace StudentsAffairs.Server.Domain.Entities;
 
 public class Assignment
 {
