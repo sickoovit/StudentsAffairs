@@ -22,11 +22,21 @@ string connectionStringAssignmentDb = builder.Configuration[connectionStringAssi
         message: "Connection String Couldn't Be Resolved. Configuration Key may be not valid"
     );
 
+string connectionStringCourseDbConfigurationKey = "CourseDbConnectionString";
+string connectionStringCourseDb = builder.Configuration[connectionStringCourseDbConfigurationKey] ??
+    throw new ArgumentNullException(
+        paramName: "connectionStringCourseDbConfigurationKey",
+        message: "Connection String Couldn't Be Resolved. Configuration Key may be not valid"
+    );
+
 builder.Services.AddDbContext<UserDbContext>(options =>
     options.UseSqlServer(connectionStringUserDb));
 
 builder.Services.AddDbContext<AssignmentDbContext>(options =>
     options.UseSqlServer(connectionStringAssignmentDb));
+
+builder.Services.AddDbContext<CourseDbContext>(options =>
+    options.UseSqlServer(connectionStringCourseDb));
 
 var app = builder.Build();
 
