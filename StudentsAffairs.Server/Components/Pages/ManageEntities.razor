@@ -1,0 +1,35 @@
+﻿@page "/manage-entities"
+
+<h3>Manage EMIS Entities</h3>
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+	<li class="nav-item" role="presentation">
+		<button class="nav-link @((studentFormActive) ? "active": "")" @onclick="ShowStudentForm">Students</button>
+	</li>
+	<li class="nav-item" role="presentation">
+		<button class="nav-link @((courseFormActive) ? "active": "")" @onclick="ShowCourseForm">Courses</button>
+	</li>
+	<li class="nav-item" role="presentation">
+		<button class="nav-link @((lectureFormActive) ? "active": "")" @onclick="ShowLectureForm">Lectures</button>
+	</li>
+	<li class="nav-item" role="presentation">
+		<button class="nav-link @((assignmentFormActive) ? "active": "")" @onclick="ShowAssignmentForm">Lectures</button>
+	</li>
+</ul>
+@if (studentFormActive)
+{
+	<AddNewStudentForm />
+}
+else if (courseFormActive)
+{
+	<AddNewCourseForm />
+}
+else if (lectureFormActive)
+{
+	<AddNewLectureForm />
+}
+else if (assignmentFormActive)
+{
+	<AddNewAssignmentForm />
+}
+
