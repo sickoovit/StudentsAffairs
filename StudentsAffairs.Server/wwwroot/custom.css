@@ -1,0 +1,187 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    background-color: var(--background-color);
+    overflow: hidden;
+}
+
+/* Brand Colors */
+:root {
+    --primary-color: #1C2533;
+    --secondary-color: #2E3A4B;
+    --accent-color: #FFAA00;
+    --accent-color-dark: #e39800; /* Adjust this to be a darker shade of your accent color */
+    --background-color: #202A37;
+    --text-color: #ffffff;
+}
+
+
+/* Sidebar */
+.sidebar {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    height: 100vh;
+    padding: 20px;
+}
+
+    .sidebar h1 {
+        font-size: 22px;
+        margin-bottom: 40px;
+    }
+
+    .sidebar ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .sidebar li {
+        padding: 15px 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+        .sidebar li i {
+            margin-right: 15px;
+        }
+
+        .sidebar li:hover {
+            background-color: var(--secondary-color);
+            padding-left: 10px;
+            transition: all 0.3s ease;
+        }
+
+/* Global */
+
+/* Button Styles */
+.special-button {
+    background-color: var(--accent-color); /* Use your accent color */
+    color: var(--text-color);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+    .special-button:hover {
+        background-color: var(--accent-color-dark)
+    }
+
+    .special-button:active {
+        transform: scale(0.98); /* Slightly shrink button on click */
+    }
+
+    .special-button:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(255, 170, 0, 0.4); /* Focus ring for accessibility */
+    }
+
+/* Responsive Adjustments */
+@media (max-width: 576px) {
+    .special-button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
+
+
+/* App Bar */
+.app-bar {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .app-bar .app-title {
+        font-size: 20px;
+    }
+
+    .app-bar .actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+        .app-bar .actions .notification,
+        .app-bar .actions .profile {
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+.profile .fa-user-tie {
+    font-size: 20px; /* Adjust size as needed */
+    color: var(--text-color); /* Or any other color for the bell */
+}
+
+.notification {
+    position: relative;
+    display: inline-block;
+}
+
+    .notification .fa-bell {
+        font-size: 20px; /* Adjust size as needed */
+        color: var(--text-color); /* Or any other color for the bell */
+    }
+
+    .notification .red-circle {
+        position: absolute;
+        top: 8px; /* Adjust based on bell size */
+        right: 8px; /* Adjust based on bell size */
+        width: 10px; /* Size of the red dot */
+        height: 10px; /* Size of the red dot */
+        background-color: red; /* Red color for the notification dot */
+        border-radius: 50%; /* Makes it a circle */
+        border: 2px solid white; /* Optional: adds a white border around the dot */
+    }
+
+/* Main Content */
+.main-content {
+    height: 100vh;
+}
+
+.content-grid {
+    height: 88%;
+}
+
+.content-box {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-radius: 10px;
+    margin-block: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+    .content-box.calendar {
+        height: 70%;
+    }
+
+    .content-box.courses {
+        height: 23%;
+    }
+
+    .content-box.todo {
+        height: 96%;
+    }
