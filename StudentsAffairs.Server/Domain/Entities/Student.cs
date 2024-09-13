@@ -12,7 +12,7 @@ public class Student : User
     public DateTime? GraduationDate { get; set; }
 
     // List of courses the student is enrolled in.
-    public List<Course>? Courses { get; set; }
+    public List<Course> Courses { get; set; } = [];
 
     // List of Todos assigned to the student.
     public List<Todo>? Todos { get; set; }

@@ -2,7 +2,7 @@
 
 public class Course
 {
-    public int Id { get; set; } // Unique identifier for the course.
+    public Guid Id { get; set; } // Unique identifier for the course.
     public string? Title { get; set; } // The title or name of the course (e.g., "Introduction to Programming").
     public string? Description { get; set; } // A brief description providing an overview of the course content.
     public string? Category { get; set; } // Category or type of course (e.g., "Programming", "Design", "Marketing").
