@@ -1,30 +1,26 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">StudentsAffairs.Server</a>
-    </div>
-</div>
-
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
-
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
-            </NavLink>
-        </div>
-    </nav>
+﻿<div class="nav-scrollable">
+	<nav class="d-flex flex-column h-100">
+		<h1>EMIS Dashboard</h1>
+		<ul>
+			<li>
+				<i class="fa-solid fa-table-columns" alt="Dashboard Icon"></i>
+				Dashboard
+			</li>
+			<li>
+				<i class="fa-solid fa-list-check" alt="Assignments Icon"></i>
+				Assignments
+			</li>
+			<li>
+				<i class="fa-solid fa-comment" alt="Community Icon"></i>
+				Community
+			</li>
+			<li>
+				<i class="fa-solid fa-gears" alt="Settings Icon"></i>
+				Settings
+			</li>
+		</ul>
+		<!-- Button Component -->
+		<button class="special-button mt-auto">Logout</button>
+	</nav>
 </div>
 
