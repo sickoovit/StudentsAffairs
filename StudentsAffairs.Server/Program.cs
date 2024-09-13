@@ -8,35 +8,27 @@ builder.Services.AddRazorComponents()
 
 builder.Configuration.AddUserSecrets<Program>();
 
-string connectionStringUserDbConfigurationKey = "UserDbConnectionString";
-string connectionStringUserDb = builder.Configuration[connectionStringUserDbConfigurationKey] ??
+string connectionStringAppDbConfigurationKey = "AppDbConnectionString";
+string connectionStringAppDb = builder.Configuration[connectionStringAppDbConfigurationKey] ??
     throw new ArgumentNullException(
-        paramName: "connectionStringUserDbConfigurationKey",
+        paramName: "connectionStringAppDbConfigurationKey",
         message: "Connection String Couldn't Be Resolved. Configuration Key may be not valid"
     );
 
-string connectionStringAssignmentDbConfigurationKey = "AssignmentDbConnectionString";
-string connectionStringAssignmentDb = builder.Configuration[connectionStringAssignmentDbConfigurationKey] ??
-    throw new ArgumentNullException(
-        paramName: "connectionStringAssignmentDbConfigurationKey",
-        message: "Connection String Couldn't Be Resolved. Configuration Key may be not valid"
-    );
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(connectionStringAppDb),
+    ServiceLifetime.Scoped);
 
-string connectionStringCourseDbConfigurationKey = "CourseDbConnectionString";
-string connectionStringCourseDb = builder.Configuration[connectionStringCourseDbConfigurationKey] ??
-    throw new ArgumentNullException(
-        paramName: "connectionStringCourseDbConfigurationKey",
-        message: "Connection String Couldn't Be Resolved. Configuration Key may be not valid"
-    );
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IAdminRepository, AdminRepository>();
+builder.Services.AddScoped<ITutorRepository, TutorRepository>();
 
-builder.Services.AddDbContext<UserDbContext>(options =>
-    options.UseSqlServer(connectionStringUserDb));
+builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+builder.Services.AddScoped<IAssignmentRepository, AssignmentRepository>();
+builder.Services.AddScoped<ILectureRepository, LectureRepository>();
 
-builder.Services.AddDbContext<AssignmentDbContext>(options =>
-    options.UseSqlServer(connectionStringAssignmentDb));
+builder.Services.AddSingleton<ICacheService, CacheService>();
 
-builder.Services.AddDbContext<CourseDbContext>(options =>
-    options.UseSqlServer(connectionStringCourseDb));
 
 var app = builder.Build();
 
