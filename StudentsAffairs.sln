@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsAffairs", "Students
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsAffairs.Client", "StudentsAffairs\StudentsAffairs.Client\StudentsAffairs.Client.csproj", "{B3737640-A88D-4297-A259-811E74C8C49D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentsAffairs.Server", "StudentsAffairs.Server\StudentsAffairs.Server.csproj", "{08787413-DC39-4573-A0A8-07790316D82C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsAffairs.Server", "StudentsAffairs.Server\StudentsAffairs.Server.csproj", "{08787413-DC39-4573-A0A8-07790316D82C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
