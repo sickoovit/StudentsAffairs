@@ -1,6 +1,6 @@
 ﻿namespace StudentsAffairs.Server.Infrastructure.Repositories;
 
-public class Repository<T, U> : IRepository<T>
+public class Repository<T, U> : IRepository<T>, IDisposable
     where T : class
     where U : DbContext
 {
@@ -41,5 +41,10 @@ public class Repository<T, U> : IRepository<T>
             _context.Set<T>().Remove(entity);
             await _context.SaveChangesAsync();
         }
+    }
+
+    public void Dispose()
+    {
+        _context.Dispose();
     }
 }

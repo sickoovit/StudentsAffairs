@@ -1,8 +1,8 @@
 ﻿namespace StudentsAffairs.Server.Infrastructure.Repositories;
 
-public class UserRepository : Repository<User, UserDbContext>, IUserRepository
+public class UserRepository : Repository<User, AppDbContext>, IUserRepository
 {
-    public UserRepository(UserDbContext context) : base(context)
+    public UserRepository(AppDbContext context) : base(context)
     {
     }
 

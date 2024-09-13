@@ -1,8 +1,8 @@
 ﻿namespace StudentsAffairs.Server.Infrastructure.Repositories;
 
-public class CourseRepository : Repository<Course, CourseDbContext>, ICourseRepository
+public class CourseRepository : Repository<Course, AppDbContext>, ICourseRepository
 {
-    public CourseRepository(CourseDbContext context) : base(context)
+    public CourseRepository(AppDbContext context) : base(context)
     {
     }
 

@@ -1,12 +1,12 @@
 ﻿namespace StudentsAffairs.Server.Infrastructure.Repositories;
 
-public class LectureRepository : Repository<Lecture, CourseDbContext>, ILectureRepository
+public class LectureRepository : Repository<Lecture, AppDbContext>, ILectureRepository
 {
-    public LectureRepository(CourseDbContext context) : base(context)
+    public LectureRepository(AppDbContext context) : base(context)
     {
     }
 
-    public async Task<IEnumerable<Lecture>> GetLecturesByCourseId(int courseId)
+    public async Task<IEnumerable<Lecture>> GetLecturesByCourseId(Guid courseId)
     {
         return await _context.Lectures
             .Where(l => l.CourseId == courseId)
