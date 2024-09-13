@@ -1,0 +1,29 @@
+﻿@namespace StudentsAffairs.Server.Components.Forms
+
+@page "/manage-entities/addLecture"
+<h2>Add New Lecture</h2>
+@if (isLoading)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <EditForm Model="@newLecture" OnValidSubmit="AddLecture">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <InputText id="title" @bind-Value="newLecture.Title" placeholder="Title" class="form-control" />
+        <InputDate id="scheduledDate" @bind-Value="newLecture.ScheduledDate" class="form-control" />
+        <InputSelect id="course" class="form-control" @bind-Value="newLecture.CourseId">
+            @foreach (var course in courses)
+            {
+                <option value="@course.Id">@course.Title</option>
+            }
+        </InputSelect>
+
+        <button type="submit" class="btn btn-primary mt-2">Add Lecture</button>
+    </EditForm>
+
+}
+
+

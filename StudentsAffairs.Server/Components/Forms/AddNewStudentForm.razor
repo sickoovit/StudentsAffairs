@@ -1,0 +1,17 @@
+﻿@namespace StudentsAffairs.Server.Components.Forms
+
+@page "/manage-entities/addStudent"
+
+<EditForm Model="@newStudent" OnValidSubmit="AddStudent">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <InputText id="name" @bind-Value="newStudent.Name" placeholder="Name" class="form-control" />
+    <InputText id="email" @bind-Value="newStudent.Email" placeholder="Email" class="form-control" />
+    <InputText id="mobile" @bind-Value="newStudent.Mobile" placeholder="Mobile" class="form-control" />
+    <InputNumber id="age" @bind-Value="newStudent.Age" placeholder="Age" class="form-control" />
+
+    <button type="submit" class="btn btn-primary mt-2">Add Student</button>
+</EditForm>
+
+

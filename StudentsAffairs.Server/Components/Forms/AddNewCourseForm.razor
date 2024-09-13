@@ -1,0 +1,26 @@
+﻿@namespace StudentsAffairs.Server.Components.Forms
+
+@page "/manage-entities/addCourse"
+
+<EditForm Model="@newCourse" OnValidSubmit="AddCourse">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <InputText id="title" @bind-Value="newCourse.Title" placeholder="Title" class="form-control" />
+    <InputTextArea id="description" @bind-Value="newCourse.Description" placeholder="Description" class="form-control" />
+    <InputText id="category" @bind-Value="newCourse.Category" placeholder="Category" class="form-control" />
+    <div class="form-group">
+        <label for="hours">Hours:</label>
+        <InputNumber id="hours" @bind-Value="newCourseDurationHours" min="0" class="form-control" />
+
+        <label for="minutes">Minutes:</label>
+        <InputNumber id="minutes" @bind-Value="newCourseDurationMinutes" min="0" max="59" class="form-control" />
+
+        <label for="seconds">Seconds:</label>
+        <InputNumber id="seconds" @bind-Value="newCourseDurationSeconds" min="0" max="59" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2">Add Course</button>
+</EditForm>
+
+
