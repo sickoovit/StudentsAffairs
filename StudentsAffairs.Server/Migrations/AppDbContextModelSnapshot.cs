@@ -10,8 +10,8 @@ using StudentsAffairs.Server.Infrastructure.Data;
 
 namespace StudentsAffairs.Server.Migrations
 {
-    [DbContext(typeof(CourseDbContext))]
-    partial class CourseDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(AppDbContext))]
+    partial class AppDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -30,8 +30,8 @@ namespace StudentsAffairs.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("CourseId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -55,7 +55,7 @@ namespace StudentsAffairs.Server.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("Assignment");
+                    b.ToTable("Assignments");
                 });
 
             modelBuilder.Entity("StudentsAffairs.Server.Domain.Entities.AssignmentSubmission", b =>
@@ -90,16 +90,14 @@ namespace StudentsAffairs.Server.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("AssignmentSubmission");
+                    b.ToTable("AssignmentSubmissions");
                 });
 
             modelBuilder.Entity("StudentsAffairs.Server.Domain.Entities.Course", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Category")
                         .HasColumnType("nvarchar(max)");
@@ -122,9 +120,14 @@ namespace StudentsAffairs.Server.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("TutorId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
                     b.HasIndex("StudentId");
+
+                    b.HasIndex("TutorId");
 
                     b.ToTable("Courses");
                 });
@@ -137,8 +140,8 @@ namespace StudentsAffairs.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("CourseId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -146,7 +149,7 @@ namespace StudentsAffairs.Server.Migrations
                     b.Property<TimeSpan?>("Duration")
                         .HasColumnType("time");
 
-                    b.Property<DateTime?>("ScheduledDate")
+                    b.Property<DateTime>("ScheduledDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
@@ -173,6 +176,9 @@ namespace StudentsAffairs.Server.Migrations
                     b.Property<int>("CourseId")
                         .HasColumnType("int");
 
+                    b.Property<Guid?>("CourseId1")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -193,7 +199,7 @@ namespace StudentsAffairs.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CourseId");
+                    b.HasIndex("CourseId1");
 
                     b.ToTable("Material");
                 });
@@ -234,61 +240,6 @@ namespace StudentsAffairs.Server.Migrations
                     b.ToTable("Note");
                 });
 
-            modelBuilder.Entity("StudentsAffairs.Server.Domain.Entities.Student", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
-                    b.Property<string>("AvatarUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("EnrollmentDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("GraduationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("LastLogin")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("MaterialId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Mobile")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Role")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Roles")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MaterialId");
-
-                    b.ToTable("Student");
-                });
-
             modelBuilder.Entity("StudentsAffairs.Server.Domain.Entities.Todo", b =>
                 {
                     b.Property<int>("Id")
@@ -299,6 +250,9 @@ namespace StudentsAffairs.Server.Migrations
 
                     b.Property<int?>("CourseId")
                         .HasColumnType("int");
+
+                    b.Property<Guid?>("CourseId1")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -323,11 +277,110 @@ namespace StudentsAffairs.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CourseId");
+                    b.HasIndex("CourseId1");
 
                     b.HasIndex("StudentId");
 
                     b.ToTable("Todo");
+                });
+
+            modelBuilder.Entity("StudentsAffairs.Server.Domain.Entities.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AvatarUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastLogin")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Mobile")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Roles")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserType")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+
+                    b.HasDiscriminator<string>("UserType").HasValue("User");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("StudentsAffairs.Server.Domain.Entities.Admin", b =>
+                {
+                    b.HasBaseType("StudentsAffairs.Server.Domain.Entities.User");
+
+                    b.Property<string>("AdminRole")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Permissions")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("Admin");
+                });
+
+            modelBuilder.Entity("StudentsAffairs.Server.Domain.Entities.Student", b =>
+                {
+                    b.HasBaseType("StudentsAffairs.Server.Domain.Entities.User");
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("EnrollmentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("GraduationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("MaterialId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("TutorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasIndex("MaterialId");
+
+                    b.HasIndex("TutorId");
+
+                    b.HasDiscriminator().HasValue("Student");
+                });
+
+            modelBuilder.Entity("StudentsAffairs.Server.Domain.Entities.Tutor", b =>
+                {
+                    b.HasBaseType("StudentsAffairs.Server.Domain.Entities.User");
+
+                    b.Property<string>("Specialty")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("Tutor");
                 });
 
             modelBuilder.Entity("StudentsAffairs.Server.Domain.Entities.Assignment", b =>
@@ -365,6 +418,10 @@ namespace StudentsAffairs.Server.Migrations
                     b.HasOne("StudentsAffairs.Server.Domain.Entities.Student", null)
                         .WithMany("Courses")
                         .HasForeignKey("StudentId");
+
+                    b.HasOne("StudentsAffairs.Server.Domain.Entities.Tutor", null)
+                        .WithMany("Courses")
+                        .HasForeignKey("TutorId");
                 });
 
             modelBuilder.Entity("StudentsAffairs.Server.Domain.Entities.Lecture", b =>
@@ -382,9 +439,7 @@ namespace StudentsAffairs.Server.Migrations
                 {
                     b.HasOne("StudentsAffairs.Server.Domain.Entities.Course", "Course")
                         .WithMany("Materials")
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CourseId1");
 
                     b.Navigation("Course");
                 });
@@ -396,18 +451,11 @@ namespace StudentsAffairs.Server.Migrations
                         .HasForeignKey("StudentId");
                 });
 
-            modelBuilder.Entity("StudentsAffairs.Server.Domain.Entities.Student", b =>
-                {
-                    b.HasOne("StudentsAffairs.Server.Domain.Entities.Material", null)
-                        .WithMany("Students")
-                        .HasForeignKey("MaterialId");
-                });
-
             modelBuilder.Entity("StudentsAffairs.Server.Domain.Entities.Todo", b =>
                 {
                     b.HasOne("StudentsAffairs.Server.Domain.Entities.Course", "Course")
                         .WithMany()
-                        .HasForeignKey("CourseId");
+                        .HasForeignKey("CourseId1");
 
                     b.HasOne("StudentsAffairs.Server.Domain.Entities.Student", "Student")
                         .WithMany("Todos")
@@ -418,6 +466,17 @@ namespace StudentsAffairs.Server.Migrations
                     b.Navigation("Course");
 
                     b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("StudentsAffairs.Server.Domain.Entities.Student", b =>
+                {
+                    b.HasOne("StudentsAffairs.Server.Domain.Entities.Material", null)
+                        .WithMany("Students")
+                        .HasForeignKey("MaterialId");
+
+                    b.HasOne("StudentsAffairs.Server.Domain.Entities.Tutor", null)
+                        .WithMany("Students")
+                        .HasForeignKey("TutorId");
                 });
 
             modelBuilder.Entity("StudentsAffairs.Server.Domain.Entities.Assignment", b =>
@@ -446,6 +505,13 @@ namespace StudentsAffairs.Server.Migrations
                     b.Navigation("Notes");
 
                     b.Navigation("Todos");
+                });
+
+            modelBuilder.Entity("StudentsAffairs.Server.Domain.Entities.Tutor", b =>
+                {
+                    b.Navigation("Courses");
+
+                    b.Navigation("Students");
                 });
 #pragma warning restore 612, 618
         }
