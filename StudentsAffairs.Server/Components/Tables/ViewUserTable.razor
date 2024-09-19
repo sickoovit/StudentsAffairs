@@ -1,0 +1,26 @@
+﻿<table class="table">
+	<thead>
+		<tr>
+			<th>Username</th>
+			<th>Name</th>
+			<th>Role</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var user in Users)
+		{
+			<tr>
+				<td>@user.Username</td>
+				<td>@user.Name</td>
+				<td>@user.Role</td>
+				<td>
+					<button class="btn btn-sm btn-primary">Generate Password</button>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+
+

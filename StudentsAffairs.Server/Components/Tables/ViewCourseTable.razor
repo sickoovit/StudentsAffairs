@@ -1,0 +1,31 @@
+﻿<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Duration (Hours)</th>
+            <th>Level</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Courses)
+        {
+            <tr>
+                <td>@course.Title</td>
+                <td>@course.Description</td>
+                <td>@course.Category</td>
+                <td>@course.Duration?.TotalHours</td>
+                <td>@course.Level</td>
+                <td>@(course.Price.HasValue ? $"${course.Price.Value:F2}" : "Free")</td>
+                <td>
+                    <button class="btn btn-sm btn-primary">Edit</button>
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

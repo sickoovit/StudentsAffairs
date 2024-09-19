@@ -1,0 +1,32 @@
+﻿@page "/assignments"
+
+<h3>Assignments</h3>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Due Date</th>
+			<th>Is Graded</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var assignment in Assignments)
+		{
+			<tr>
+				<td>@assignment.Title</td>
+				<td>@assignment.Description</td>
+				<td>@assignment.DueDate.ToString("yyyy-MM-dd")</td>
+				<td>@(assignment.IsGraded ? "Yes" : "No")</td>
+				<td>
+					<button class="btn btn-sm btn-primary">Edit</button>
+					<button class="btn btn-sm btn-danger">Delete</button>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+
+
