@@ -37,6 +37,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notes", "Notes\Notes.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todos", "Todos\Todos.csproj", "{5D7AEC1F-C844-4A0D-AB1A-AD21474025BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitiesCreateFormComponents", "EntitiesCreateFormComponents\EntitiesCreateFormComponents.csproj", "{68FCC031-1F30-4E45-AACE-A2A67D2E053E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitiesViewTableComponents", "EntitiesViewTableComponents\EntitiesViewTableComponents.csproj", "{B774B054-2FB0-456F-93A7-F6674C98C80C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +115,14 @@ Global
 		{5D7AEC1F-C844-4A0D-AB1A-AD21474025BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D7AEC1F-C844-4A0D-AB1A-AD21474025BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D7AEC1F-C844-4A0D-AB1A-AD21474025BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68FCC031-1F30-4E45-AACE-A2A67D2E053E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68FCC031-1F30-4E45-AACE-A2A67D2E053E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68FCC031-1F30-4E45-AACE-A2A67D2E053E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68FCC031-1F30-4E45-AACE-A2A67D2E053E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B774B054-2FB0-456F-93A7-F6674C98C80C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B774B054-2FB0-456F-93A7-F6674C98C80C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B774B054-2FB0-456F-93A7-F6674C98C80C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B774B054-2FB0-456F-93A7-F6674C98C80C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
