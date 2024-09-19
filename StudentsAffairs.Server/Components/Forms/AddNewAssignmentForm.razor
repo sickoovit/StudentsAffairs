@@ -1,32 +1,33 @@
 ﻿@namespace StudentsAffairs.Server.Components.Forms
 
-@page "/manage-entities/addAssignment"
-
 <EditForm Model="@newAssignment" OnValidSubmit="AddAssignment">
-    <DataAnnotationsValidator />
+    <FluentValidationValidator />
     <ValidationSummary />
+
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <InputText id="title" class="form-control" @bind-Value="newAssignment.Title" />
-
     </div>
 
     <div class="mb-3">
         <label for="description" class="form-label">Description</label>
         <InputTextArea id="description" class="form-control" @bind-Value="newAssignment.Description" />
-        <ValidationMessage For="@(() => newAssignment.Description)" />
     </div>
 
     <div class="mb-3">
         <label for="dueDate" class="form-label">Due Date</label>
         <InputDate id="dueDate" class="form-control" @bind-Value="newAssignment.DueDate" />
-        <ValidationMessage For="@(() => newAssignment.DueDate)" />
+    </div>
+
+    <div class="mb-3">
+        <label for="maxScore" class="form-label">Max Score</label>
+        <InputNumber id="maxScore" class="form-control" @bind-Value="newAssignment.MaxScore" />
     </div>
 
     <div class="mb-3">
         <label for="course" class="form-label">Course</label>
         <InputSelect id="course" class="form-control" @bind-Value="newAssignment.CourseId">
-            @foreach (var course in courses)
+            @foreach (var course in Courses)
             {
                 <option value="@course.Id">@course.Title</option>
             }
@@ -34,7 +35,6 @@
         <ValidationMessage For="@(() => newAssignment.CourseId)" />
     </div>
 
-    <button type="submit" class="btn btn-primary mt-2">Add Assignment</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </EditForm>
-
 

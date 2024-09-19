@@ -1,26 +1,36 @@
-﻿@namespace StudentsAffairs.Server.Components.Forms
-
-@page "/manage-entities/addCourse"
-
-<EditForm Model="@newCourse" OnValidSubmit="AddCourse">
+﻿<EditForm Model="@newCourse" OnValidSubmit="AddCourse" class="manage-entities-form">
     <DataAnnotationsValidator />
     <ValidationSummary />
 
-    <InputText id="title" @bind-Value="newCourse.Title" placeholder="Title" class="form-control" />
-    <InputTextArea id="description" @bind-Value="newCourse.Description" placeholder="Description" class="form-control" />
-    <InputText id="category" @bind-Value="newCourse.Category" placeholder="Category" class="form-control" />
-    <div class="form-group">
-        <label for="hours">Hours:</label>
-        <InputNumber id="hours" @bind-Value="newCourseDurationHours" min="0" class="form-control" />
-
-        <label for="minutes">Minutes:</label>
-        <InputNumber id="minutes" @bind-Value="newCourseDurationMinutes" min="0" max="59" class="form-control" />
-
-        <label for="seconds">Seconds:</label>
-        <InputNumber id="seconds" @bind-Value="newCourseDurationSeconds" min="0" max="59" class="form-control" />
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <InputText id="title" class="form-control" @bind-Value="newCourse.Title" />
     </div>
 
-    <button type="submit" class="btn btn-primary mt-2">Add Course</button>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <InputTextArea id="description" class="form-control" @bind-Value="newCourse.Description" />
+    </div>
+
+    <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <InputText id="category" class="form-control" @bind-Value="newCourse.Category" />
+    </div>
+
+    <div class="mb-3">
+        <label for="level" class="form-label">Level</label>
+        <InputText id="level" class="form-control" @bind-Value="newCourse.Level" />
+    </div>
+
+    <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <InputNumber id="price" class="form-control" @bind-Value="newCourse.Price" />
+    </div>
+
+    <div class="mb-3">
+        <label for="hours">Duration in Hours:</label>
+        <InputNumber id="hours" @bind-Value="newCourseDurationHours" min="0" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
 </EditForm>
-
-

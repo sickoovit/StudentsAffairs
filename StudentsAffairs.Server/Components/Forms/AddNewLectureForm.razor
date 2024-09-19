@@ -1,29 +1,46 @@
 ﻿@namespace StudentsAffairs.Server.Components.Forms
 
-@page "/manage-entities/addLecture"
-<h2>Add New Lecture</h2>
-@if (isLoading)
-{
-    <p>Loading...</p>
-}
-else
-{
-    <EditForm Model="@newLecture" OnValidSubmit="AddLecture">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
+<EditForm Model="@newLecture" OnValidSubmit="AddLecture">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
 
-        <InputText id="title" @bind-Value="newLecture.Title" placeholder="Title" class="form-control" />
-        <InputDate id="scheduledDate" @bind-Value="newLecture.ScheduledDate" class="form-control" />
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <InputText id="title" class="form-control" @bind-Value="newLecture.Title" />
+    </div>
+
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <InputTextArea id="description" class="form-control" @bind-Value="newLecture.Description" />
+    </div>
+
+    <div class="mb-3">
+        <label for="scheduledDate" class="form-label">Scheduled Date</label>
+        <InputDate id="scheduledDate" class="form-control" @bind-Value="newLecture.ScheduledDate" />
+    </div>
+
+    <div class="mb-3">
+        <label for="duration" class="form-label">Duration (Hours)</label>
+        <InputNumber id="duration" class="form-control" @bind-Value="lectureDuration" />
+    </div>
+
+    <div class="mb-3">
+        <label for="videoUrl" class="form-label">Video URL (optional)</label>
+        <InputText id="videoUrl" class="form-control" @bind-Value="newLecture.VideoUrl" />
+    </div>
+
+    <div class="mb-3">
         <InputSelect id="course" class="form-control" @bind-Value="newLecture.CourseId">
-            @foreach (var course in courses)
+            @foreach (var course in Courses)
             {
                 <option value="@course.Id">@course.Title</option>
             }
         </InputSelect>
+    </div>
 
-        <button type="submit" class="btn btn-primary mt-2">Add Lecture</button>
-    </EditForm>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</EditForm>
 
-}
+
 
 
