@@ -1,10 +1,10 @@
-using StudentsAffairs.Server.Components;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddBlazoredSessionStorage();
 
 builder.Configuration.AddUserSecrets<Program>();
 
@@ -19,6 +19,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionStringAppDb),
     ServiceLifetime.Scoped);
 
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 builder.Services.AddScoped<ITutorRepository, TutorRepository>();
@@ -27,8 +29,9 @@ builder.Services.AddScoped<ICourseRepository, CourseRepository>();
 builder.Services.AddScoped<IAssignmentRepository, AssignmentRepository>();
 builder.Services.AddScoped<ILectureRepository, LectureRepository>();
 
-builder.Services.AddSingleton<ICacheService, CacheService>();
+builder.Services.AddScoped<ISessionRepository, SessionRepository>();
 
+builder.Services.AddSingleton<ICacheService, CacheService>();
 
 var app = builder.Build();
 
