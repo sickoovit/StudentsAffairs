@@ -1,0 +1,92 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #1A2B48;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+}
+
+.login-container {
+    display: flex;
+    max-width: 1000px;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Left side with options */
+.options-container {
+    flex: 1;
+    background-color: #1C2D52;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+    .options-container h2 {
+        font-size: 26px;
+        margin-bottom: 30px;
+        font-weight: bold;
+        color: #D4AF37;
+    }
+
+.login-btn {
+    background-color: transparent;
+    border: 2px solid #D4AF37;
+    border-radius: 5px;
+    color: #D4AF37;
+    padding: 15px 30px;
+    font-size: 18px;
+    width: 100%;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+    .login-btn:hover {
+        background-color: #D4AF37;
+        color: #1C2D52;
+        transform: scale(1.05);
+    }
+
+/* Right side with form */
+.login-form-container {
+    flex: 2;
+    background-color: #FFFFFF;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #1A2B48;
+}
+
+    .login-form-container h3 {
+        font-size: 24px;
+        margin-bottom: 30px;
+        font-weight: bold;
+    }
+
+    .login-form-container .login-btn {
+        background-color: #D4AF37;
+        border: none;
+        border-radius: 5px;
+        color: #1A2B48;
+        padding: 15px;
+        font-size: 18px;
+        width: 100%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+        .login-form-container .login-btn:hover {
+            background-color: #c49a2d;
+        }

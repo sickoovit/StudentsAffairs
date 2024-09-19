@@ -1,35 +1,69 @@
-﻿@page "/manage-entities"
+﻿<h3>Manage Entities</h3>
 
-<h3>Manage EMIS Entities</h3>
+@page "/manage-entities"
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-	<li class="nav-item" role="presentation">
-		<button class="nav-link @((studentFormActive) ? "active": "")" @onclick="ShowStudentForm">Students</button>
-	</li>
-	<li class="nav-item" role="presentation">
-		<button class="nav-link @((courseFormActive) ? "active": "")" @onclick="ShowCourseForm">Courses</button>
-	</li>
-	<li class="nav-item" role="presentation">
-		<button class="nav-link @((lectureFormActive) ? "active": "")" @onclick="ShowLectureForm">Lectures</button>
-	</li>
-	<li class="nav-item" role="presentation">
-		<button class="nav-link @((assignmentFormActive) ? "active": "")" @onclick="ShowAssignmentForm">Lectures</button>
-	</li>
-</ul>
-@if (studentFormActive)
+@if (isLoading)
 {
-	<AddNewStudentForm />
+	<p><em>Loading...</em></p>
 }
-else if (courseFormActive)
+else
 {
-	<AddNewCourseForm />
-}
-else if (lectureFormActive)
-{
-	<AddNewLectureForm />
-}
-else if (assignmentFormActive)
-{
-	<AddNewAssignmentForm />
-}
+	<ul class="nav nav-tabs" id="myTab" role="tablist">
+		<li class="nav-item" role="presentation">
+			<button class="nav-link @((userFormActive) ? "active": "")" @onclick="ShowUserForm">Users</button>
+		</li>
+		<li class="nav-item" role="presentation">
+			<button class="nav-link @((courseFormActive) ? "active": "")" @onclick="ShowCourseForm">Courses</button>
+		</li>
+		<li class="nav-item" role="presentation">
+			<button class="nav-link @((lectureFormActive) ? "active": "")" @onclick="ShowLectureForm">Lectures</button>
+		</li>
+		<li class="nav-item" role="presentation">
+			<button class="nav-link @((assignmentFormActive) ? "active": "")" @onclick="ShowAssignmentForm">Assignments</button>
+		</li>
+	</ul>
+	<div class="split-container">
+		<!-- Left Side - Form -->
+		<div class="left-side rounded-container">
+			@if (userFormActive)
+			{
+				<h3>Create User</h3>
+				<AddNewUserForm />
+			}
+			else if (courseFormActive)
+			{
+				<h3>Create Course</h3>            <AddNewCourseForm />
+			}
+			else if (lectureFormActive)
+			{
+				<h3>Create Lecture</h3>            <AddNewLectureForm Courses="courses" />
+			}
+			else if (assignmentFormActive)
+			{
+				<h3>Create Assignment</h3>            <AddNewAssignmentForm Courses="courses" />
+			}
+		</div>
 
+		<!-- Right Side - Table -->
+		<div class="right-side rounded-container">
+			@if (userFormActive)
+			{
+				<h3>User Table</h3>            <ViewUserTable Users="users" />
+			}
+			else if (courseFormActive)
+			{
+				<h3>Course Table</h3>
+				<ViewCourseTable Courses="courses" />
+			}
+			else if (lectureFormActive)
+			{
+				<h3>Lecture Table</h3>            <ViewLectureTable Lectures="lectures" />
+			}
+			else if (assignmentFormActive)
+			{
+				<h3>Assignment Table</h3>
+				<ViewAssignmentTable Assignments="assignments" />
+			}
+		</div>
+	</div>
+}

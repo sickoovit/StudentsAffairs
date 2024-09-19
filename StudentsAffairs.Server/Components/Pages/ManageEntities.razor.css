@@ -1,0 +1,92 @@
+﻿.split-container {
+    display: flex;
+    justify-content: space-between; /* Space between form and table */
+    padding: 20px;
+    height: 90%; /* Full screen height */
+}
+
+.left-side, .right-side {
+    flex: 1;
+    margin: 0 10px; /* Margin between the containers */
+}
+
+.rounded-container {
+    background-color: var(--primary-color); /* Dark background color */
+    color: white;
+    border-radius: 20px; /* Rounded corners */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.table {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.table-dark {
+    background-color: #1e2124; /* Dark table background */
+    color: #ffffff;
+}
+
+    .table-dark th, .table-dark td {
+        border-color: #2c2f33;
+    }
+
+h3 {
+    text-align: center;
+}
+
+.split-container .left-side, .split-container .right-side {
+    display: flex;
+    flex-direction: column; /* Vertically center content */
+    overflow-y: scroll;
+    padding-bottom: 20px;
+}
+
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar {
+    background-color: var(--accent-color); /* Dark background */
+    padding: 10px 0;
+    display: flex;
+    justify-content: center; /* Center the ul element horizontally */
+}
+
+.nav-list {
+    list-style-type: none; /* Remove bullet points */
+    display: flex; /* Flexbox layout for horizontal alignment */
+    justify-content: center; /* Center the nav items */
+    gap: 30px; /* Spacing between nav items */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    margin: 0; /* Remove default margins */
+}
+
+.nav-link {
+    background-color: var(--secondary-color);
+    color: var(--text-color); /* White text */
+    text-decoration: none; /* No underline */
+    font-size: 1.2rem; /* Increase font size */
+    padding: 10px 20px;
+    border-radius: 10px; /* Rounded corners */
+    transition: background-color 0.3s ease;
+}
+
+    .nav-link.active {
+        background-color: var(--accent-color);
+        color: var(--text-color);
+    }
+
+    .nav-link:hover {
+        background-color: var(--primary-color);
+    }
+
+    .nav-link.active:hover {
+        background-color: var(--accent-color-dark); /* Background on hover */
+    }

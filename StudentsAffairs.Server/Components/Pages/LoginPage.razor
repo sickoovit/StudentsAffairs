@@ -1,0 +1,67 @@
+﻿@page "/login"
+@layout LoginLayout
+
+<div class="login-container">
+    <!-- Left Section -->
+    <div class="options-container">
+        <h2>Select Your Role</h2>
+        <button class="login-btn" @onclick='() => SelectRole("Tutor")'>Tutor</button>
+        <button class="login-btn" @onclick='() => SelectRole("Student")'>Student</button>
+        <button class="login-btn" @onclick='() => SelectRole("Admin")'>Admin</button>
+        <p>Selected Role: @loginModel.Role</p>
+    </div>
+
+    <!-- Right Section -->
+    <div class="form-container login-form-container">
+        <h3>Login to Your Account</h3>
+        <EditForm class="form" Model="@loginModel" OnValidSubmit="HandleLogin">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <InputText @bind-Value="loginModel.Username" placeholder="Username" class="form-control login-input" />
+            <ValidationMessage For="() => loginModel.Username" />
+
+            <InputText @bind-Value="loginModel.Password" placeholder="Password" type="password" class="form-control login-input" />
+            <ValidationMessage For="() => loginModel.Password" />
+
+            <button type="submit" class="login-btn">Login</button>
+        </EditForm>
+    </div>
+</div>
+
+@if (isSubmitted)
+{
+    <p>You submitted the form.</p>
+}
+
+@code {
+    [Inject]
+    private IUserRepository? _userRepository { get; set; }
+
+    private User loginModel = new User(Role: "Student");
+    private User loginMatch = new();
+    private bool isSubmitted = false;
+
+    // Method to handle login
+    private void HandleLogin()
+    {
+        if (_userRepository is null)
+            throw new ArgumentNullException("_userRepository");
+
+        if (!string.IsNullOrEmpty(loginModel.Username) && !string.IsNullOrEmpty(loginModel.Password))
+        {
+            // Implement login logic here
+            loginMatch = _userRepository.GetUserByUsername(loginModel.Username) ?? new();
+            if(loginMatch.Username is not null)
+            {
+                isSubmitted = true;
+            }
+        }
+    }
+
+    // Method to select role
+    private void SelectRole(string role)
+    {
+        loginModel.Role = role;
+    }
+}
