@@ -1,0 +1,73 @@
+﻿/* App Bar */
+.app-bar {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for elegance */
+    width:100%;
+}
+
+    .app-bar .app-title {
+        font-size: 24px;
+        font-family: 'Garamond', serif; /* Elegant serif font */
+        font-weight: 700;
+    }
+
+    .app-bar .actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+        /* Notification and Profile */
+        .app-bar .actions .notification,
+        .app-bar .actions .profile {
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+            /* Hover Effect */
+            .app-bar .actions .notification:hover,
+            .app-bar .actions .profile:hover {
+                background-color: #F9F6EE;
+                transform: scale(1.1); /* Subtle scaling for elegance */
+            }
+
+/* Profile Icon */
+.profile .fa-user-tie {
+    font-size: 20px;
+    color: var(--secondary-color);
+}
+
+/* Notification Bell */
+.notification {
+    position: relative;
+    display: inline-block;
+}
+
+    .notification .fa-bell {
+        font-size: 20px;
+        color: var(--secondary-color);
+    }
+
+    /* Red Dot for Notifications */
+    .notification .red-circle {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 10px;
+        height: 10px;
+        background-color: red;
+        border-radius: 50%;
+        border: 2px solid white;
+    }
