@@ -19,7 +19,7 @@
 	<ItemGroup>
 		<PackageReference Include="Blazored.FluentValidation" Version="2.2.0" />
 		<PackageReference Include="Blazored.SessionStorage" Version="2.4.0" />
-		<PackageReference Include="FluentValidation" Version="11.9.2" />
+		<PackageReference Include="FluentValidation" Version="11.10.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
 			<PrivateAssets>all</PrivateAssets>
@@ -30,6 +30,24 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Admins\Admins.csproj" />
+	  <ProjectReference Include="..\AssignmentSubmissions\AssignmentSubmissions.csproj" />
+	  <ProjectReference Include="..\Assignments\Assignments.csproj" />
+	  <ProjectReference Include="..\CacheServices\CacheServices.csproj" />
+	  <ProjectReference Include="..\Courses\Courses.csproj" />
+	  <ProjectReference Include="..\Lectures\Lectures.csproj" />
+	  <ProjectReference Include="..\Materials\Materials.csproj" />
+	  <ProjectReference Include="..\Notes\Notes.csproj" />
+	  <ProjectReference Include="..\Sessions\Sessions.csproj" />
+	  <ProjectReference Include="..\StudentsAffairs\StudentsAffairs.Client\StudentsAffairs.Client.csproj" />
+	  <ProjectReference Include="..\StudentsAffairs\StudentsAffairs\StudentsAffairs.csproj" />
+	  <ProjectReference Include="..\Students\Students.csproj" />
+	  <ProjectReference Include="..\Todos\Todos.csproj" />
+	  <ProjectReference Include="..\Tutors\Tutors.csproj" />
+	  <ProjectReference Include="..\Users\Users.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

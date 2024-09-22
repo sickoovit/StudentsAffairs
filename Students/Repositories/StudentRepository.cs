@@ -1,4 +1,6 @@
-﻿namespace Students.Repositories;
+﻿using Students.Entities;
+
+namespace Students.Repositories;
 
 public class StudentRepository : Repository<Student, AppDbContext>, IStudentRepository
 {

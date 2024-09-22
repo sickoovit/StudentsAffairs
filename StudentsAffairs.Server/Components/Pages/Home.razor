@@ -2,13 +2,64 @@
 
 <PageTitle>Home</PageTitle>
 
-<div class="row h-100">
-    <div class="col-md-8 h-100">
-        <div class="content-box calendar">Calendar</div>
-        <div class="content-box courses">Courses & Study Material</div>
-    </div>
+@if (isLoading)
+{
+	<p>Loading...</p>
+}
+else
+{
+	<div class="row h-100">
+		<div class="col-md-8 h-100">
+			<div class="content-box calendar">Calendar</div>
+			<div class="content-box courses">Courses & Study Material</div>
+		</div>
 
-    <div class="col-md-4">
-        <div class="content-box todo">To-Do & Notes</div>
-    </div>
-</div>
+		<div class="col-md-4">
+			<div class="content-box todo">To-Do & Notes</div>
+		</div>
+	</div>
+}
+
+
+@code {
+	[Inject]
+	private ISessionStorageService? _sessionStorageService { get; set; }
+	[Inject]
+	private ISessionRepository? _sessionRepository { get; set; }
+	[Inject]
+	private NavigationManager? _navManager { get; set; }
+
+	private Session? _session { get; set; }
+	private bool isLoading = true;
+
+	protected async override Task OnAfterRenderAsync(bool firstRender)
+	{
+		if (firstRender)
+		{
+			if (_sessionStorageService == null)
+				throw new ArgumentNullException("sessionStorageService");
+
+			if (_sessionRepository == null)
+				throw new ArgumentNullException("sessionRepository");
+
+			if (_navManager == null)
+				throw new ArgumentNullException("navManager");
+
+			_session = new();
+			
+			_session = await _sessionRepository.GetSessionAsync(_sessionStorageService);
+			//_session.userId = Guid.NewGuid();
+			if (_session.userId == Guid.Empty)
+			{
+				_navManager.NavigateTo("/login");
+			}
+			else
+			{
+				isLoading = false;
+				StateHasChanged();
+			}
+		}
+
+		await base.OnAfterRenderAsync(firstRender);
+	}
+}

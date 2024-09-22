@@ -1,6 +1,6 @@
-﻿
+﻿using Students.Entities;
 
-namespace StudentsAffairs.Server.Repositories;
+namespace Students.Repositories;
 
 public interface IStudentRepository
 {
