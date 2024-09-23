@@ -1,6 +1,6 @@
 ﻿namespace Notes.Entities;
 
-public class Note : IdEntity, CourseReference, LessonReference
+public class Note : IdEntity, IHasCourseReference, IHasLessonReference
 {
     // The content or text of the note.
     public string? Content { get; set; }
@@ -10,4 +10,6 @@ public class Note : IdEntity, CourseReference, LessonReference
     public DateTime? LastUpdatedDate { get; set; }
     // Flag indicating whether the note is marked as important.
     public bool IsImportant { get; set; }
+	public Guid? CourseId { get; set; }
+	public Guid? LessonId { get; set; }
 }

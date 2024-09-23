@@ -1,6 +1,6 @@
 ﻿namespace Shared.Entities;
 
-public abstract class CourseReference
+public interface IHasCourseReference
 {
 	public Guid? CourseId { get; set; }
 }

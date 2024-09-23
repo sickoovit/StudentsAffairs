@@ -1,6 +1,6 @@
 ﻿namespace Materials.Entities;
 
-public class Material : IdEntity, CourseReference
+public class Material : IdEntity, IHasCourseReference
 {
 	public string? Title { get; set; } // Title or name of the material
 	public string? Description { get; set; } // Brief description of the material's content
@@ -9,4 +9,5 @@ public class Material : IdEntity, CourseReference
 	public DateTime? UploadedDate { get; set; } // Date when the material was uploaded
 	public bool IsDownloadable { get; set; } // Indicates if the material can be downloaded
 	public List<Guid>? StudentIds { get; set; } // List of student IDs who have access to the material
+	public Guid? CourseId { get; set; }
 }

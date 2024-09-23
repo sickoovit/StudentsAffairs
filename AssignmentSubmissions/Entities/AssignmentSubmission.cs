@@ -1,6 +1,6 @@
 ﻿namespace AssignmentSubmissions.Entities;
 
-public class AssignmentSubmission : IdEntity, StudentReference, AssignmentReference
+public class AssignmentSubmission : IdEntity, IHasStudentReference, IHasAssignmentReference
 {
     // The date when the assignment was submitted.
     public DateTime SubmittedAt { get; set; }
@@ -13,4 +13,7 @@ public class AssignmentSubmission : IdEntity, StudentReference, AssignmentRefere
 
     // The file or content of the submission (e.g., a URL or file path).
     public string? SubmissionContent { get; set; }
+
+    public Guid? AssignmentId { get; set; }
+	public Guid? StudentId { get; set; }
 }

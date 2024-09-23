@@ -1,6 +1,6 @@
 ﻿namespace Todos.Entities;
 
-public class Todo : IdEntity, StudentReference, CourseReference, LessonReference
+public class Todo : IdEntity, IHasStudentReference, IHasCourseReference, IHasLessonReference
 {
     // Title or short description of the Todo item (e.g., "Complete Chapter 1").
     public string? Title { get; set; }
@@ -11,5 +11,8 @@ public class Todo : IdEntity, StudentReference, CourseReference, LessonReference
     // Due date for completing the task, nullable in case no specific deadline is set.
     public DateTime? DueDate { get; set; }
     // Priority level of the task (e.g., Low, Medium, High), could be an enum.
-    public string? Priority { get; set; } 
+    public string? Priority { get; set; }
+	public Guid? StudentId { get; set; }
+	public Guid? CourseId { get; set; }
+	public Guid? LessonId { get; set; }
 }
