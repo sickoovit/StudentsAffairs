@@ -1,14 +1,9 @@
-using Microsoft.AspNetCore.HttpOverrides;
-
-
-using System.Runtime.CompilerServices;
-
 namespace StudentsAffairs.Server.Components.Pages;
 
 public partial class ManageEntities
 {
 	[Inject]
-	ICacheService cacheService { get; set; }
+	ICacheServiceRepository cacheServiceRepository { get; set; }
 	[Inject]
 	IAssignmentRepository assignmentRepository { get; set; }
 	[Inject]
@@ -36,22 +31,22 @@ public partial class ManageEntities
 		if (firstRender)
 		{
 			isLoading = true;
-			assignments = await cacheService.GetOrAdd("assignments", async () =>
+			assignments = await cacheServiceRepository.GetOrAdd("assignments", async () =>
 			{
 				// Fetch data from the database here
 				return await assignmentRepository.GetAllAsync();
 			});
-			courses = await cacheService.GetOrAdd("courses", async () =>
+			courses = await cacheServiceRepository.GetOrAdd("courses", async () =>
 			{
 				// Fetch data from the database here
 				return await courseRepository.GetAllAsync();
 			});
-			lectures = await cacheService.GetOrAdd("lectures", async () =>
+			lectures = await cacheServiceRepository.GetOrAdd("lectures", async () =>
 			{
 				// Fetch data from the database here
 				return await lectureRepository.GetAllAsync();
 			});
-			users = await cacheService.GetOrAdd("users", async () =>
+			users = await cacheServiceRepository.GetOrAdd("users", async () =>
 			{
 				// Fetch data from the database here
 				return await userRepository.GetAllAsync();

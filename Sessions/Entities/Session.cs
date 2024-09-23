@@ -1,7 +1,6 @@
 ﻿namespace Sessions.Entities;
 
-public class Session : IdEntity, IHasTutorReference
+public class Session : IdEntity
 {
-	public List<Guid>? StudentsIds { get; set; }
-	public Guid? TutorId { get; set; }
+
 }

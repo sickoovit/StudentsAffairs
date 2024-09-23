@@ -51,7 +51,7 @@ else
 
 			_session = await _sessionRepository.GetSessionAsync(_sessionStorageService);
 			//_session.userId = Guid.NewGuid();
-			if (_session.userId == Guid.Empty)
+			if (_session.Id == Guid.Empty)
 			{
 				_navManager.NavigateTo("/login");
 			}

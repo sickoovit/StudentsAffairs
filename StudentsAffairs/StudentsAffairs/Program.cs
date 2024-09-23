@@ -23,11 +23,11 @@ string connectionStringAssignmentDb = builder.Configuration[connectionStringAssi
         message: "Connection String Couldn't Be Resolved. Configuration Key may be not valid"
     );
 
-builder.Services.AddDbContext<UserDbContext>(options =>
-    options.UseSqlServer(connectionStringUserDb));
+//builder.Services.AddDbContext<AppDbContext>(options =>
+//    options.UseSqlServer(connectionStringUserDb));
 
-builder.Services.AddDbContext<AssignmentDbContext>(options =>
-    options.UseSqlServer(connectionStringAssignmentDb));
+//builder.Services.AddDbContext<AppDbContext>(options =>
+//    options.UseSqlServer(connectionStringAssignmentDb));
 
 var app = builder.Build();
 

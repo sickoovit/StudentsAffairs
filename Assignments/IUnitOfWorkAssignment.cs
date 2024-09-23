@@ -3,9 +3,9 @@
 
 public interface IUnitOfWorkAssignment : IDisposable
 {
-    ICourseRepository Courses { get; }
-    IAssignmentRepository Assignments { get; }
-    IMaterialRepository Materials { get; }
+    //ICourseRepository Courses { get; }
+    //IAssignmentRepository Assignments { get; }
+    //IMaterialRepository Materials { get; }
     Task<int> SaveChangesAsync();
 }
 

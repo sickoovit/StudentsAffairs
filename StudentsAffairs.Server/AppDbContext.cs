@@ -7,25 +7,25 @@ public class AppDbContext : DbContext
     {
     }
 
-    //public DbSet<Assignment> Assignments { get; set; }
-    //public DbSet<AssignmentSubmission> AssignmentSubmissions { get; set; }
+    public DbSet<Assignment> Assignments { get; set; }
+    public DbSet<AssignmentSubmission> AssignmentSubmissions { get; set; }
 
-    //public DbSet<Course> Courses { get; set; }
-    //public DbSet<Lecture> Lectures { get; set; }
+    public DbSet<Course> Courses { get; set; }
+    public DbSet<Lecture> Lectures { get; set; }
 
-    //public DbSet<User> Users { get; set; }
-    //public DbSet<Student> Students { get; set; }
-    //public DbSet<Tutor> Tutors { get; set; }
-    //public DbSet<Admin> Admins { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<Student> Students { get; set; }
+    public DbSet<Tutor> Tutors { get; set; }
+    public DbSet<Admin> Admins { get; set; }
 
-    //protected override void OnModelCreating(ModelBuilder modelBuilder)
-    //{
-    //    LectureModelConfiguration(modelBuilder);
-    //    AssignmentModelConfiguration(modelBuilder);
-    //    AssignmentSubmissionModelConfiguration(modelBuilder);
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        //LectureModelConfiguration(modelBuilder);
+        //AssignmentModelConfiguration(modelBuilder);
+        //AssignmentSubmissionModelConfiguration(modelBuilder);
 
-    //    base.OnModelCreating(modelBuilder);
-    //}
+        base.OnModelCreating(modelBuilder);
+    }
 
     //protected void LectureModelConfiguration(ModelBuilder modelBuilder)
     //{

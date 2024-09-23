@@ -5,7 +5,7 @@ public class SessionRepository : ISessionRepository
     public async Task InitSessionAsync(ISessionStorageService sessionStorageService, Guid userId)
     {
         Session session = new Session();
-        session.sessionId = new Guid();
+        session.Id = userId;
         await sessionStorageService.SetItemAsync("sessionInfo", session);
     }
     public async Task<Session> GetSessionAsync(ISessionStorageService sessionStorageService)

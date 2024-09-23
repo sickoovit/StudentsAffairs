@@ -22,8 +22,8 @@ public class StudentValidator : AbstractValidator<Student>
             .WithMessage("Graduation date must be after the enrollment date.");
 
         // Ensuring that at least one course is enrolled
-        RuleFor(student => student.Courses)
-            .NotEmpty().WithMessage("At least one course must be enrolled.")
-            .Must(courses => courses.Count > 0).WithMessage("Student must be enrolled in at least one course.");
+        //RuleFor(student => student.Courses)
+        //    .NotEmpty().WithMessage("At least one course must be enrolled.")
+        //    .Must(courses => courses.Count > 0).WithMessage("Student must be enrolled in at least one course.");
     }
 }

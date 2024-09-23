@@ -42,8 +42,7 @@
 	  <ProjectReference Include="..\Materials\Materials.csproj" />
 	  <ProjectReference Include="..\Notes\Notes.csproj" />
 	  <ProjectReference Include="..\Sessions\Sessions.csproj" />
-	  <ProjectReference Include="..\StudentsAffairs\StudentsAffairs.Client\StudentsAffairs.Client.csproj" />
-	  <ProjectReference Include="..\StudentsAffairs\StudentsAffairs\StudentsAffairs.csproj" />
+	  <ProjectReference Include="..\Shared\Shared.csproj" />
 	  <ProjectReference Include="..\Students\Students.csproj" />
 	  <ProjectReference Include="..\Todos\Todos.csproj" />
 	  <ProjectReference Include="..\Tutors\Tutors.csproj" />

@@ -1,6 +1,4 @@
-﻿using Users.Entities;
-
-namespace Users.Validators;
+﻿namespace Users.Validators;
 
 public class UserValidator : AbstractValidator<User>
 {

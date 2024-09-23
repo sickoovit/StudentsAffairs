@@ -1,8 +1,10 @@
-﻿using System;
-
+﻿
 namespace AssignmentSubmissions.Repositories
 {
-	public class AssignmentSubmissionRepository : Repository<Student, AppDbContext>, IAssignmentSubmissionRepository
+	public class AssignmentSubmissionRepository : Repository<AssignmentSubmission>, IAssignmentSubmissionRepository
 	{
+		public AssignmentSubmissionRepository(DbContext context) : base(context)
+		{
+		}
 	}
 }

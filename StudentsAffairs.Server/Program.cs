@@ -19,19 +19,19 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionStringAppDb),
     ServiceLifetime.Scoped);
 
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository<AppDbContext>>();
 
-builder.Services.AddScoped<IStudentRepository, StudentRepository>();
-builder.Services.AddScoped<IAdminRepository, AdminRepository>();
-builder.Services.AddScoped<ITutorRepository, TutorRepository>();
+builder.Services.AddScoped<IStudentRepository, StudentRepository<AppDbContext>>();
+builder.Services.AddScoped<IAdminRepository, AdminRepository<AppDbContext>>();
+builder.Services.AddScoped<ITutorRepository, TutorRepository<AppDbContext>>();
 
-builder.Services.AddScoped<ICourseRepository, CourseRepository>();
-builder.Services.AddScoped<IAssignmentRepository, AssignmentRepository>();
-builder.Services.AddScoped<ILectureRepository, LectureRepository>();
+builder.Services.AddScoped<ICourseRepository, CourseRepository<AppDbContext>>();
+builder.Services.AddScoped<IAssignmentRepository, AssignmentRepository<AppDbContext>>();
+builder.Services.AddScoped<ILectureRepository, LectureRepository<AppDbContext>>();
 
 builder.Services.AddScoped<ISessionRepository, SessionRepository>();
 
-builder.Services.AddSingleton<ICacheService, CacheService>();
+builder.Services.AddSingleton<ICacheServiceRepository, CacheServiceRepository>();
 
 var app = builder.Build();
 
