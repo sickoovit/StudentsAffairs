@@ -16,11 +16,6 @@ public class UserValidator : AbstractValidator<User>
             .NotEmpty().WithMessage("Password is required.")
             .MinimumLength(8).WithMessage("Password must be at least 8 characters long.");
 
-        RuleFor(user => user.Role)
-            .NotEmpty().WithMessage("Role is required.")
-            .Must(role => role == "Student" || role == "Tutor" || role == "Admin")
-            .WithMessage("Invalid role.");
-
         RuleFor(user => user.Mobile)
             .Matches(@"^\d{10}$").WithMessage("Mobile number must be 10 digits.")
             .When(user => !string.IsNullOrEmpty(user.Mobile));

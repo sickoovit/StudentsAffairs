@@ -5,3 +5,4 @@ global using Courses.Entities;
 
 global using Shared.Entities;
 global using Shared.Repositories;
+global using Shared.EntityConfigurations;

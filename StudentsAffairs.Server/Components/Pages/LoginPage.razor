@@ -8,7 +8,7 @@
         <button class="login-btn" @onclick='() => SelectRole("Tutor")'>Tutor</button>
         <button class="login-btn" @onclick='() => SelectRole("Student")'>Student</button>
         <button class="login-btn" @onclick='() => SelectRole("Admin")'>Admin</button>
-        <p>Selected Role: @loginModel.Role</p>
+        <p>Selected Role: @loginModelRole</p>
     </div>
 
     <!-- Right Section -->
@@ -38,8 +38,9 @@
     [Inject]
     private IUserRepository? _userRepository { get; set; }
 
-    private User loginModel = new User(Role: "Student");
-    private User loginMatch = new();
+    private User loginModel = new Student();
+    private User loginMatch = new Student();
+    private string loginModelRole = "Student";
     private bool isSubmitted = false;
 
     // Method to handle login
@@ -51,7 +52,7 @@
         if (!string.IsNullOrEmpty(loginModel.Username) && !string.IsNullOrEmpty(loginModel.Password))
         {
             // Implement login logic here
-            loginMatch = _userRepository.GetUserByUsername(loginModel.Username) ?? new();
+            loginMatch = _userRepository.GetUserByUsername(loginModel.Username) ?? new Student();
             if(loginMatch.Username is not null)
             {
                 isSubmitted = true;
@@ -62,6 +63,6 @@
     // Method to select role
     private void SelectRole(string role)
     {
-        loginModel.Role = role;
+        loginModelRole = role;
     }
 }

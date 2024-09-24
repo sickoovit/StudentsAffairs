@@ -1,15 +1,7 @@
 ﻿namespace Shared.Entities;
 
-public class User : IdEntity
+public abstract class User : IdEntity
 {
-    public User()
-    {
-
-    }
-    public User(string Role)
-    {
-        this.Role = Role;
-    }
 
     public string? Username { get; set; }
 
@@ -22,10 +14,6 @@ public class User : IdEntity
     // User's password (hashed for security).
     public string? Password { get; set; }
 
-    // Role of the user (e.g., "Student", "Tutor", "Admin").
-    public string? Role { get; set; }
-
-    // Date when the user account was created.
     public DateTime CreatedAt { get; set; }
 
     // Last login date (nullable, if the user hasn't logged in yet).

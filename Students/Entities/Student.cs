@@ -2,9 +2,6 @@
 
 public class Student : User
 {
-    public Student(string Role = "Student") : base(Role)
-    {
-    }
 
     // Student's age.
     public int Age { get; set; }

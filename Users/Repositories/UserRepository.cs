@@ -6,14 +6,6 @@ public class UserRepository : Repository<User>, IUserRepository
     {
     }
 
-    public async Task<IEnumerable<User>> GetUsersByRoleAsync(string role)
-    {
-        // Using LINQ to filter users by role
-        return await _dbSet
-            .Where(u => u.Role != null && u.Role.Equals(role, StringComparison.OrdinalIgnoreCase))
-            .ToListAsync();
-    }
-
     public User? GetUserByUsername(string username)
     {
         return _dbSet
