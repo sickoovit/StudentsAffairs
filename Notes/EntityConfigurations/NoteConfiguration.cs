@@ -1,13 +1,12 @@
 ﻿namespace Notes.EntityConfigurations;
 
-public class NoteConfiguration : IdEntityBaseConfiguration<Note>
+public class NoteConfiguration : IEntityTypeConfiguration<Note>
 {
-	public new void Configure(EntityTypeBuilder<Note> builder)
+	public void Configure(EntityTypeBuilder<Note> builder)
 	{
-		base.Configure(builder);
-
-		// Configure properties
-		builder.Property(n => n.Content)
+		builder.ToTable(nameof(Note)+"s");
+        // Configure properties
+        builder.Property(n => n.Content)
 			   .IsRequired() // Assuming content is required
 			   .HasMaxLength(2000); // Maximum length for the content
 
@@ -15,7 +14,7 @@ public class NoteConfiguration : IdEntityBaseConfiguration<Note>
 			   .IsRequired(); // CreatedDate is required
 
 		builder.Property(n => n.LastUpdatedDate)
-			   .IsRequired(false); // LastUpdatedDate is optional
+			   .IsRequired(); // LastUpdatedDate is optional
 
 		builder.Property(n => n.IsImportant)
 			   .IsRequired(); // IsImportant is required

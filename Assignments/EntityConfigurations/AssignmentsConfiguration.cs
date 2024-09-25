@@ -1,14 +1,12 @@
 ﻿namespace Assignments.EntityConfigurations;
 
-public class AssignmentConfiguration : IdEntityBaseConfiguration<Assignment>
+public class AssignmentConfiguration : IEntityTypeConfiguration<Assignment>
 {
-	public new void Configure(EntityTypeBuilder<Assignment> builder)
+	public void Configure(EntityTypeBuilder<Assignment> builder)
 	{
-		// Apply base configuration for IdEntity
-		base.Configure(builder);
-
-		// Property configurations for Assignment
-		builder.Property(a => a.Title)
+        builder.ToTable(nameof(Assignment) + "s");
+        // Property configurations for Assignment
+        builder.Property(a => a.Title)
 			.HasMaxLength(255)
 			.IsRequired();
 
@@ -17,7 +15,7 @@ public class AssignmentConfiguration : IdEntityBaseConfiguration<Assignment>
 			.IsRequired();
 
 		builder.Property(a => a.DueDate)
-			.IsRequired(false);
+			.IsRequired();
 
 		builder.Property(a => a.CreatedAt)
 			.IsRequired();
@@ -33,8 +31,8 @@ public class AssignmentConfiguration : IdEntityBaseConfiguration<Assignment>
 		builder.Property(a => a.CourseId)
 			.IsRequired();
 
-		builder.Property(a => a.AssignmentSubmissionsIds)
-			.IsRequired(false);
+		//builder.Property(a => a.AssignmentSubmissionsIds)
+		//	.IsRequired(false);
 
 		builder.HasIndex(a => a.Title);
 		builder.HasIndex(a => a.CourseId);

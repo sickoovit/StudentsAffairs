@@ -1,14 +1,12 @@
 ﻿namespace AssignmentSubmissions.EntityConfigurations;
 
-public class AssignmentSubmissionConfiguration : IdEntityBaseConfiguration<AssignmentSubmission>
+public class AssignmentSubmissionConfiguration : IEntityTypeConfiguration<AssignmentSubmission>
 {
-	public new void Configure(EntityTypeBuilder<AssignmentSubmission> builder)
+	public void Configure(EntityTypeBuilder<AssignmentSubmission> builder)
 	{
-		// Configure primary key
-		base.Configure(builder);
-
-		// Configure properties
-		builder.Property(a => a.SubmittedAt)
+        builder.ToTable(nameof(AssignmentSubmission) + "s");
+        // Configure properties
+        builder.Property(a => a.SubmittedAt)
 			   .IsRequired(); // The submission date is required
 
 		builder.Property(a => a.Score)

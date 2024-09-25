@@ -2,14 +2,13 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Lectures.EntityConfigurations;
 
-public class LectureConfiguration : IdEntityBaseConfiguration<Lecture>
+public class LectureConfiguration : IEntityTypeConfiguration<Lecture>
 {
-	public new void Configure(EntityTypeBuilder<Lecture> builder)
+	public void Configure(EntityTypeBuilder<Lecture> builder)
 	{
-		base.Configure(builder);
-
-		// Configure properties
-		builder.Property(l => l.Title)
+		builder.ToTable(nameof(Lecture)+"s");
+        // Configure properties
+        builder.Property(l => l.Title)
 			   .IsRequired()
 			   .HasMaxLength(200); // Set title as required with a max length
 
@@ -25,8 +24,8 @@ public class LectureConfiguration : IdEntityBaseConfiguration<Lecture>
 		builder.Property(l => l.VideoUrl)
 			   .HasMaxLength(500); // Optional Video URL with a max length
 
-		builder.HasKey(l => l.Title);
-		builder.HasKey(l => l.ScheduledDate);
+		builder.HasIndex(l => l.Title);
+		builder.HasIndex(l => l.ScheduledDate);
 
 		//// Relationships
 		//builder.HasOne<Course>() // Assuming you have a Course entity

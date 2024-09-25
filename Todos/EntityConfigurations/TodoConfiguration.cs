@@ -1,13 +1,12 @@
 ﻿namespace Todos.EntityConfigurations;
 
-public class TodoConfiguration : IdEntityBaseConfiguration<Todo>
+public class TodoConfiguration : IEntityTypeConfiguration<Todo>
 {
-	public new void Configure(EntityTypeBuilder<Todo> builder)
+	public void Configure(EntityTypeBuilder<Todo> builder)
 	{
-		base.Configure(builder);
-
-		// Configure properties
-		builder.Property(t => t.Title)
+        builder.ToTable(nameof(Todo) + "s");
+        // Configure properties
+        builder.Property(t => t.Title)
 			   .IsRequired(); // Title is required
 
 		builder.Property(t => t.Description)
@@ -17,7 +16,7 @@ public class TodoConfiguration : IdEntityBaseConfiguration<Todo>
 			   .IsRequired(); // IsCompleted is required
 
 		builder.Property(t => t.DueDate)
-			   .IsRequired(false); // DueDate is optional
+			   .IsRequired(); // DueDate is optional
 
 		builder.Property(t => t.Priority)
 			   .IsRequired(); // Priority is optional

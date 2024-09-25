@@ -1,12 +1,10 @@
 ﻿namespace Shared.EntityConfigurations;
-
-public class IdEntityBaseConfiguration<T> : IEntityTypeConfiguration<T> where T : IdEntity
+public class IdEntityBaseConfiguration : IEntityTypeConfiguration<IdEntity>
 {
-	public void Configure(EntityTypeBuilder<T> builder)
-	{
-		// Primary key
-		builder.HasKey(u => u.Id);
+    public void Configure(EntityTypeBuilder<IdEntity> builder)
+    {
+        builder.HasKey(u => u.Id);
 
-		builder.HasIndex(u => u.Id);
-	}
+        builder.HasIndex(u => u.Id);
+    }
 }

@@ -2,7 +2,6 @@
 
 public abstract class User : IdEntity
 {
-
     public string? Username { get; set; }
 
     // Full name of the user.
@@ -17,7 +16,7 @@ public abstract class User : IdEntity
     public DateTime CreatedAt { get; set; }
 
     // Last login date (nullable, if the user hasn't logged in yet).
-    public DateTime? LastLogin { get; set; }
+    public DateTime LastLogin { get; set; }
 
     // Flag to indicate if the user is active.
     public bool IsActive { get; set; }

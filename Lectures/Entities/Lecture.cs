@@ -1,6 +1,6 @@
 ﻿namespace Lectures.Entities;
 
-public class Lecture : IdEntity, IHasCourseReference
+public partial class Lecture : IdEntity, IHasCourseReference
 {
     public string? Title { get; set; }  // Title of the lecture
     public string? Description { get; set; }  // Short description of what the lecture covers

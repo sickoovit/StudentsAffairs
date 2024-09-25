@@ -18,7 +18,6 @@ public class StudentValidator : AbstractValidator<Student>
         // Validating GraduationDate (must be greater than or equal to EnrollmentDate, if provided)
         RuleFor(student => student.GraduationDate)
             .GreaterThanOrEqualTo(student => student.EnrollmentDate)
-            .When(student => student.GraduationDate.HasValue)
             .WithMessage("Graduation date must be after the enrollment date.");
 
         // Ensuring that at least one course is enrolled

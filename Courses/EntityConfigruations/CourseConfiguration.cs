@@ -1,13 +1,12 @@
 ﻿namespace Courses.EntityConfigurations;
 
-public class CourseConfiguration : IdEntityBaseConfiguration<Course>
+public class CourseConfiguration : IEntityTypeConfiguration<Course>
 {
-	public new void Configure(EntityTypeBuilder<Course> builder)
+	public void Configure(EntityTypeBuilder<Course> builder)
 	{
-		base.Configure(builder);
-
-		// Configure properties
-		builder.Property(c => c.Title)
+        builder.ToTable(nameof(Course) + "s");
+        // Configure properties
+        builder.Property(c => c.Title)
 			   .IsRequired()
 			   .HasMaxLength(200); // Set title as required with a max length
 

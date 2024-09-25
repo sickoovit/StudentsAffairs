@@ -9,37 +9,39 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsAffairs.Client", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsAffairs.Server", "StudentsAffairs.Server\StudentsAffairs.Server.csproj", "{08787413-DC39-4573-A0A8-07790316D82C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Students", "Students\Students.csproj", "{01F1A3B4-5A96-4C22-A0C7-0554EA4C8942}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Students", "Students\Students.csproj", "{01F1A3B4-5A96-4C22-A0C7-0554EA4C8942}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutors", "Tutors\Tutors.csproj", "{73C7AFA7-D359-409A-B785-A37BB7AE823A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tutors", "Tutors\Tutors.csproj", "{73C7AFA7-D359-409A-B785-A37BB7AE823A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admins", "Admins\Admins.csproj", "{4E5E8A55-163C-4AB3-A25B-D4EA9B28C5E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admins", "Admins\Admins.csproj", "{4E5E8A55-163C-4AB3-A25B-D4EA9B28C5E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignments", "Assignments\Assignments.csproj", "{44028B58-8F73-47B0-926B-1C5E6B3D93C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignments", "Assignments\Assignments.csproj", "{44028B58-8F73-47B0-926B-1C5E6B3D93C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{89E1AE5C-46FA-47BF-A015-F07C9024186A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{89E1AE5C-46FA-47BF-A015-F07C9024186A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Courses", "Courses\Courses.csproj", "{8B5704B9-BD4A-466F-984D-4785F85A885F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Courses", "Courses\Courses.csproj", "{8B5704B9-BD4A-466F-984D-4785F85A885F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lectures", "Lectures\Lectures.csproj", "{559AF87B-8815-4291-857A-7E3BDEB95CCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lectures", "Lectures\Lectures.csproj", "{559AF87B-8815-4291-857A-7E3BDEB95CCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Materials", "Materials\Materials.csproj", "{AE0AF681-B383-4969-87C5-DCB8AA79AD91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Materials", "Materials\Materials.csproj", "{AE0AF681-B383-4969-87C5-DCB8AA79AD91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sessions", "Sessions\Sessions.csproj", "{BA4DC82F-BD90-48DC-928E-3067BFC61949}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sessions", "Sessions\Sessions.csproj", "{BA4DC82F-BD90-48DC-928E-3067BFC61949}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Users", "Users\Users.csproj", "{268E5DCF-BCA9-483B-853C-334C8E2C55F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Users", "Users\Users.csproj", "{268E5DCF-BCA9-483B-853C-334C8E2C55F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CacheServices", "CacheServices\CacheServices.csproj", "{4D8A9221-2651-432A-8776-662A7DC0548B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CacheServices", "CacheServices\CacheServices.csproj", "{4D8A9221-2651-432A-8776-662A7DC0548B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssignmentSubmissions", "AssignmentSubmissions\AssignmentSubmissions.csproj", "{8D5D1856-4BAE-4B65-AC80-3CF62DB45DD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssignmentSubmissions", "AssignmentSubmissions\AssignmentSubmissions.csproj", "{8D5D1856-4BAE-4B65-AC80-3CF62DB45DD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notes", "Notes\Notes.csproj", "{70FFDDB1-1EBD-4054-948D-C0DE16ACE204}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notes", "Notes\Notes.csproj", "{70FFDDB1-1EBD-4054-948D-C0DE16ACE204}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todos", "Todos\Todos.csproj", "{5D7AEC1F-C844-4A0D-AB1A-AD21474025BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todos", "Todos\Todos.csproj", "{5D7AEC1F-C844-4A0D-AB1A-AD21474025BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitiesCreateFormComponents", "EntitiesCreateFormComponents\EntitiesCreateFormComponents.csproj", "{68FCC031-1F30-4E45-AACE-A2A67D2E053E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntitiesCreateFormComponents", "EntitiesCreateFormComponents\EntitiesCreateFormComponents.csproj", "{68FCC031-1F30-4E45-AACE-A2A67D2E053E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitiesViewTableComponents", "EntitiesViewTableComponents\EntitiesViewTableComponents.csproj", "{B774B054-2FB0-456F-93A7-F6674C98C80C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntitiesViewTableComponents", "EntitiesViewTableComponents\EntitiesViewTableComponents.csproj", "{B774B054-2FB0-456F-93A7-F6674C98C80C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityRelationships", "EntityRelationships\EntityRelationships.csproj", "{0887E471-37B2-4835-A5A3-5373C678868F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +125,10 @@ Global
 		{B774B054-2FB0-456F-93A7-F6674C98C80C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B774B054-2FB0-456F-93A7-F6674C98C80C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B774B054-2FB0-456F-93A7-F6674C98C80C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0887E471-37B2-4835-A5A3-5373C678868F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0887E471-37B2-4835-A5A3-5373C678868F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0887E471-37B2-4835-A5A3-5373C678868F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0887E471-37B2-4835-A5A3-5373C678868F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
