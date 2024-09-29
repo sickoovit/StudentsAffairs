@@ -1,7 +1,7 @@
 ﻿namespace Shared.EntityConfigurations;
-public class IdEntityBaseConfiguration : IEntityTypeConfiguration<IdEntity>
+public class IdEntityBaseConfiguration<T> : IEntityTypeConfiguration<T> where T : IdEntity
 {
-    public void Configure(EntityTypeBuilder<IdEntity> builder)
+    public virtual void Configure(EntityTypeBuilder<T> builder)
     {
         builder.HasKey(u => u.Id);
 

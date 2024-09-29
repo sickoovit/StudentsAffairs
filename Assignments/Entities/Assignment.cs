@@ -1,6 +1,6 @@
 ﻿namespace Assignments.Entities;
 
-public partial class Assignment : IdEntity, IHasCourseReference
+public class Assignment : IdEntity
 {
     // Title or name of the assignment.
     public string? Title { get; set; }
@@ -19,9 +19,6 @@ public partial class Assignment : IdEntity, IHasCourseReference
 
     // The maximum score possible for the assignment.
     public decimal MaxScore { get; set; }
-
-    // List of student submissions for this assignment.
-    //public List<Guid>? AssignmentSubmissionsIds { get; set; }
 	public Guid? CourseId { get; set; }
 }
 

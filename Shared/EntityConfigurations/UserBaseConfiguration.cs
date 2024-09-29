@@ -1,6 +1,6 @@
-﻿public class UserBaseConfiguration : IEntityTypeConfiguration<User>
+﻿public class UserBaseConfiguration<T> : IdEntityBaseConfiguration<T> where T : User
 {
-    public void Configure(EntityTypeBuilder<User> builder)
+    public override void Configure(EntityTypeBuilder<T> builder)
     {
         builder.Property(u => u.Username)
             .HasMaxLength(50)
@@ -25,7 +25,7 @@
             .IsRequired();
 
         builder.Property(u => u.IsActive)
-            .IsRequired(false);
+            .IsRequired();
 
         builder.Property(u => u.Mobile)
             .HasMaxLength(20)
@@ -39,5 +39,7 @@
         builder.HasIndex(u => u.Name);
         builder.HasIndex(u => u.Email);
         builder.HasIndex(u => u.Mobile);
+
+        base.Configure(builder);
     }
 }

@@ -41,7 +41,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntitiesCreateFormComponent
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntitiesViewTableComponents", "EntitiesViewTableComponents\EntitiesViewTableComponents.csproj", "{B774B054-2FB0-456F-93A7-F6674C98C80C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityRelationships", "EntityRelationships\EntityRelationships.csproj", "{0887E471-37B2-4835-A5A3-5373C678868F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Underdev", "Underdev", "{D25AD19E-7A9D-41E2-9E79-2289BD91C050}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -125,13 +125,15 @@ Global
 		{B774B054-2FB0-456F-93A7-F6674C98C80C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B774B054-2FB0-456F-93A7-F6674C98C80C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B774B054-2FB0-456F-93A7-F6674C98C80C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0887E471-37B2-4835-A5A3-5373C678868F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0887E471-37B2-4835-A5A3-5373C678868F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0887E471-37B2-4835-A5A3-5373C678868F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0887E471-37B2-4835-A5A3-5373C678868F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AE0AF681-B383-4969-87C5-DCB8AA79AD91} = {D25AD19E-7A9D-41E2-9E79-2289BD91C050}
+		{8D5D1856-4BAE-4B65-AC80-3CF62DB45DD8} = {D25AD19E-7A9D-41E2-9E79-2289BD91C050}
+		{70FFDDB1-1EBD-4054-948D-C0DE16ACE204} = {D25AD19E-7A9D-41E2-9E79-2289BD91C050}
+		{5D7AEC1F-C844-4A0D-AB1A-AD21474025BB} = {D25AD19E-7A9D-41E2-9E79-2289BD91C050}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {62155182-E670-44F0-B350-AD2DD6C815BC}

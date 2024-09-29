@@ -34,19 +34,13 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Admins\Admins.csproj" />
-	  <ProjectReference Include="..\AssignmentSubmissions\AssignmentSubmissions.csproj" />
 	  <ProjectReference Include="..\Assignments\Assignments.csproj" />
 	  <ProjectReference Include="..\CacheServices\CacheServices.csproj" />
 	  <ProjectReference Include="..\Courses\Courses.csproj" />
 	  <ProjectReference Include="..\Lectures\Lectures.csproj" />
-	  <ProjectReference Include="..\Materials\Materials.csproj" />
-	  <ProjectReference Include="..\Notes\Notes.csproj" />
 	  <ProjectReference Include="..\Sessions\Sessions.csproj" />
-	  <ProjectReference Include="..\Shared\Shared.csproj" />
 	  <ProjectReference Include="..\Students\Students.csproj" />
-	  <ProjectReference Include="..\Todos\Todos.csproj" />
 	  <ProjectReference Include="..\Tutors\Tutors.csproj" />
-	  <ProjectReference Include="..\Users\Users.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,11 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-namespace Lectures.EntityConfigurations;
+﻿namespace Lectures.EntityConfigurations;
 
-public class LectureConfiguration : IEntityTypeConfiguration<Lecture>
+public class LectureConfiguration : IdEntityBaseConfiguration<Lecture>
 {
-	public void Configure(EntityTypeBuilder<Lecture> builder)
+	public override void Configure(EntityTypeBuilder<Lecture> builder)
 	{
+		base.Configure(builder);
 		builder.ToTable(nameof(Lecture)+"s");
         // Configure properties
         builder.Property(l => l.Title)
@@ -26,11 +25,5 @@ public class LectureConfiguration : IEntityTypeConfiguration<Lecture>
 
 		builder.HasIndex(l => l.Title);
 		builder.HasIndex(l => l.ScheduledDate);
-
-		//// Relationships
-		//builder.HasOne<Course>() // Assuming you have a Course entity
-		//	   .WithMany() // Assuming a course can have many lectures
-		//	   .HasForeignKey(l => l.CourseId) // Linking to the CourseId property
-		//	   .OnDelete(DeleteBehavior.Cascade); // Optional: Configure delete behavior
 	}
 }

@@ -1,10 +1,10 @@
 ﻿namespace Assignments.EntityConfigurations;
 
-public class AssignmentConfiguration : IEntityTypeConfiguration<Assignment>
+public class AssignmentConfiguration : IdEntityBaseConfiguration<Assignment>
 {
-	public void Configure(EntityTypeBuilder<Assignment> builder)
+	public override void Configure(EntityTypeBuilder<Assignment> builder)
 	{
-        builder.ToTable(nameof(Assignment) + "s");
+		builder.ToTable(nameof(Assignment) + "s");
         // Property configurations for Assignment
         builder.Property(a => a.Title)
 			.HasMaxLength(255)
@@ -37,5 +37,7 @@ public class AssignmentConfiguration : IEntityTypeConfiguration<Assignment>
 		builder.HasIndex(a => a.Title);
 		builder.HasIndex(a => a.CourseId);
 
-	}
+        base.Configure(builder);
+
+    }
 }

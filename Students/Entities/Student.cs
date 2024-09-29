@@ -1,6 +1,6 @@
 ﻿namespace Students.Entities;
 
-public partial class Student : User
+public class Student : User
 {
 
     // Student's age.
@@ -10,10 +10,4 @@ public partial class Student : User
 
     public DateTime GraduationDate { get; set; }
 
-    // Instead of referencing the Course entity, store the list of Course IDs.
-    //public List<Guid> CourseIds { get; set; } = new();
-
-    //public List<Guid>? TodoIds { get; set; }
-
-    //public List<Guid>? NoteIds { get; set; }
 }

@@ -1,8 +1,8 @@
 ﻿namespace Courses.EntityConfigurations;
 
-public class CourseConfiguration : IEntityTypeConfiguration<Course>
+public class CourseConfiguration : IdEntityBaseConfiguration<Course>
 {
-	public void Configure(EntityTypeBuilder<Course> builder)
+	public override void Configure(EntityTypeBuilder<Course> builder)
 	{
         builder.ToTable(nameof(Course) + "s");
         // Configure properties
@@ -28,17 +28,19 @@ public class CourseConfiguration : IEntityTypeConfiguration<Course>
 		builder.HasIndex(c => c.Title);
 		builder.HasIndex(c => c.Category);
 
-		//// Relationships
-		//builder.HasMany<Material>() // Assuming you have a Material entity
-		//	   .WithMany() // Assuming a course can have many materials
-		//	   .UsingEntity(j => j.ToTable("CourseMaterials")); // Join table if necessary
+        base.Configure(builder);
 
-		//builder.HasMany<Assignment>() // Assuming you have an Assignment entity
-		//	   .WithMany() // Assuming a course can have many assignments
-		//	   .UsingEntity(j => j.ToTable("CourseAssignments")); // Join table if necessary
+        //// Relationships
+        //builder.HasMany<Material>() // Assuming you have a Material entity
+        //	   .WithMany() // Assuming a course can have many materials
+        //	   .UsingEntity(j => j.ToTable("CourseMaterials")); // Join table if necessary
 
-		//builder.HasMany<Lecture>() // Assuming you have a Lecture entity
-		//	   .WithMany() // Assuming a course can have many lectures
-		//	   .UsingEntity(j => j.ToTable("CourseLectures")); // Join table if necessary
-	}
+        //builder.HasMany<Assignment>() // Assuming you have an Assignment entity
+        //	   .WithMany() // Assuming a course can have many assignments
+        //	   .UsingEntity(j => j.ToTable("CourseAssignments")); // Join table if necessary
+
+        //builder.HasMany<Lecture>() // Assuming you have a Lecture entity
+        //	   .WithMany() // Assuming a course can have many lectures
+        //	   .UsingEntity(j => j.ToTable("CourseLectures")); // Join table if necessary
+    }
 }

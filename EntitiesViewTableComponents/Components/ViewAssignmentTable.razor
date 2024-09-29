@@ -1,5 +1,7 @@
 ﻿@page "/assignments"
 
+@namespace StudentsAffairs.Server.Components.Tables
+
 <h3>Assignments</h3>
 <table class="table table-striped">
 	<thead>
@@ -12,7 +14,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach (var assignment in Assignments)
+		@foreach (var assignment in Assignments ?? [])
 		{
 			<tr>
 				<td>@assignment.Title</td>
