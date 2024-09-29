@@ -1,4 +1,4 @@
-﻿namespace StudentsAffairs.Server.UnitsOfWork;
+﻿namespace Assignments;
 
 
 public interface IUnitOfWorkAssignment : IDisposable

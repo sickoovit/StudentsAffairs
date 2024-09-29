@@ -1,0 +1,31 @@
+﻿@namespace Lectures.Client.Components
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Scheduled Date</th>
+            <th>Duration (Hours)</th>
+            <th>Video URL</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var lecture in LecturesList)
+        {
+            <tr>
+                <td>@lecture.Title</td>
+                <td>@lecture.Description</td>
+                <td>@lecture.ScheduledDate.ToString("yyyy-MM-dd")</td>
+                <td>@lecture.Duration?.TotalHours</td>
+                <td>@lecture.VideoUrl</td>
+                <td>
+                    <button class="btn btn-sm btn-primary">Edit</button>
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
