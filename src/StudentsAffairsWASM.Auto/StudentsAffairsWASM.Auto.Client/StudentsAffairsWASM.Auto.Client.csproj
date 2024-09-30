@@ -33,9 +33,6 @@
     <Content Update="Layout\NavMenu.razor">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
     </Content>
-    <Content Update="Pages\Counter.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
     <Content Update="Pages\Home.razor">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
     </Content>
@@ -53,11 +50,15 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Pages\Dashboard.razor" />
-    <_ContentIncludedByDefault Remove="Pages\Error.razor" />
   </ItemGroup>
 
   <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\Error.razor" />
+    <ProjectReference Include="..\..\Domains\Admins\Admins.Client\Admins.Client.csproj" />
+    <ProjectReference Include="..\..\Domains\Assignments\Assignments.Client\Assignments.Client.csproj" />
+    <ProjectReference Include="..\..\Domains\Courses\Courses.Client\Courses.Client.csproj" />
+    <ProjectReference Include="..\..\Domains\Lectures\Lectures.Client\Lectures.Client.csproj" />
+    <ProjectReference Include="..\..\Domains\Students\Students.Client\Students.Client.csproj" />
+    <ProjectReference Include="..\..\Domains\Tutors\Tutors.Client\Tutors.Client.csproj" />
   </ItemGroup>
 
 </Project>

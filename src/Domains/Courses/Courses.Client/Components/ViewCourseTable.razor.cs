@@ -1,7 +1,4 @@
-using System.Reflection.Metadata;
-
-
-namespace StudentsAffairs.Server.Components.Tables;
+namespace Courses.Client.Components;
 
 public partial class ViewCourseTable
 {

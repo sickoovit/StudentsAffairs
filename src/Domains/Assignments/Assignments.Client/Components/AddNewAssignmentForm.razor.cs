@@ -1,4 +1,4 @@
-namespace EntitiesCreateFormComponents.Components;
+namespace Assignments.Client.Components;
 
 public partial class AddNewAssignmentForm
 {

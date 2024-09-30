@@ -1,7 +1,7 @@
 ﻿@namespace Lectures.Client.Components
 
 <EditForm Model="@newLecture" OnValidSubmit="AddLecture">
-    <DataAnnotationsValidator />
+    <FluentValidationValidator />
     <ValidationSummary />
 
     <div class="mb-3">

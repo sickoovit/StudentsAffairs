@@ -1,17 +1,11 @@
-namespace StudentsAffairs.Server.Components.Pages;
+using Assignments.Entities;
+using Courses.Entities;
+using Lectures.Entities;
+
+namespace StudentsAffairsWASM.Auto.Client.Components.Pages;
 
 public partial class ManageEntities
 {
-	[Inject]
-	ICacheServiceRepository cacheServiceRepository { get; set; }
-	[Inject]
-	IAssignmentRepository assignmentRepository { get; set; }
-	[Inject]
-	IUserRepository userRepository { get; set; }
-	[Inject]
-	ICourseRepository courseRepository { get; set; }
-	[Inject]
-	ILectureRepository lectureRepository { get; set; }
 
 	// Entity class used in the form
 	private IEnumerable<Assignment> assignments = new List<Assignment>();
@@ -24,6 +18,8 @@ public partial class ManageEntities
 	protected async override Task OnInitializedAsync()
 	{
 		isLoading = true;
+
+		await base.OnInitializedAsync();
 	}
 
 	protected async override Task OnAfterRenderAsync(bool firstRender)
@@ -31,26 +27,7 @@ public partial class ManageEntities
 		if (firstRender)
 		{
 			isLoading = true;
-			assignments = await cacheServiceRepository.GetOrAdd("assignments", async () =>
-			{
-				// Fetch data from the database here
-				return await assignmentRepository.GetAllAsync();
-			});
-			courses = await cacheServiceRepository.GetOrAdd("courses", async () =>
-			{
-				// Fetch data from the database here
-				return await courseRepository.GetAllAsync();
-			});
-			lectures = await cacheServiceRepository.GetOrAdd("lectures", async () =>
-			{
-				// Fetch data from the database here
-				return await lectureRepository.GetAllAsync();
-			});
-			users = await cacheServiceRepository.GetOrAdd("users", async () =>
-			{
-				// Fetch data from the database here
-				return await userRepository.GetAllAsync();
-			});
+			// TODO: Get Entities
 			isLoading = false;
 			StateHasChanged();
 		}

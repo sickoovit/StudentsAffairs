@@ -1,6 +1,6 @@
-﻿namespace Sessions.Entities;
+﻿namespace SessionStorage.Entities;
 
-public class Session : IdEntity
+public class Session
 {
 
 }

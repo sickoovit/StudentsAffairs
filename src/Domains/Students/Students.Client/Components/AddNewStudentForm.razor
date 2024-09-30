@@ -1,0 +1,19 @@
+﻿<EditForm Model="@newStudent" class="manage-entities-form">
+    <FluentValidationValidator/>
+        <div>
+            <h4>Create Student</h4>
+            <label>Username</label>
+            <InputText @bind-Value="newStudent.Username" class="form-control" />
+            <ValidationMessage For="@(() => newStudent.Username)" />
+
+            <label>Name</label>
+            <InputText @bind-Value="newStudent.Name" class="form-control" />
+            <ValidationMessage For="@(() => newStudent.Name)" />
+
+            <label>Age</label>
+            <InputNumber @bind-Value="newStudent.Age" class="form-control" />
+            <ValidationMessage For="@(() => newStudent.Age)" />
+        </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </EditForm>

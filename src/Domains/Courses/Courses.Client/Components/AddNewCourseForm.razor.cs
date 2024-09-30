@@ -1,4 +1,4 @@
-namespace EntitiesCreateFormComponents.Components;
+namespace Courses.Client.Components;
 
 public partial class AddNewCourseForm
 {

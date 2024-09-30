@@ -1,4 +1,5 @@
-﻿global using System.Reflection;
+﻿global using StudentsAffairsWASM.Auto.Components;
+global using System.Reflection;
 global using Microsoft.AspNetCore.Components;
 global using Microsoft.EntityFrameworkCore;
 global using Blazored.SessionStorage;
@@ -23,7 +24,3 @@ global using Courses.Repositories;
 global using Lectures.Repositories;
 global using Students.Repositories;
 global using Tutors.Repositories;
-
-global using Sessions.Entities;
-global using Sessions.Repositories;
-global using CacheServices.Repositories;

@@ -1,0 +1,18 @@
+﻿<EditForm Model="@newTutor" class="manage-entities-form">
+    <FluentValidationValidator/>
+        <div>
+            <h4>Create Tutor</h4>
+            <label>Username</label>
+            <InputText @bind-Value="newTutor.Username" class="form-control" />
+            <ValidationMessage For="@(() => newTutor.Username)" />
+
+            <label>Name</label>
+            <InputText @bind-Value="newTutor.Name" class="form-control" />
+            <ValidationMessage For="@(() => newTutor.Name)" />
+
+            <label>Specialty</label>
+            <InputText @bind-Value="newTutor.Specialty" class="form-control" />
+            <ValidationMessage For="@(() => newTutor.Specialty)" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+</EditForm>

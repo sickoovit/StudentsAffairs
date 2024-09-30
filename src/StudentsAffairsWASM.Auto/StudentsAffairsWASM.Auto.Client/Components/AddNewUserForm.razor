@@ -1,0 +1,25 @@
+﻿@namespace StudentsAffairsWASM.Auto.Client.Components
+@using Microsoft.AspNetCore.Components.Forms
+@using Students.Client.Components
+@using Tutors.Client.Components
+@using Admins.Client.Components
+
+<InputSelect @bind-Value="selectedRole" class="form-control">
+	<option value="">-- Select Role --</option>
+	<option value="Student">Student</option>
+	<option value="Tutor">Tutor</option>
+	<option value="Admin">Admin</option>
+</InputSelect>
+
+@if (selectedRole == "Student")
+{
+	<AddNewStudentForm/>
+}
+else if (selectedRole == "Tutor")
+{
+	<AddNewTutorForm/>
+}
+else if (selectedRole == "Admin")
+{
+	<AddNewAdminForm/>
+}

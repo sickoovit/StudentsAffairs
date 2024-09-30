@@ -1,4 +1,4 @@
-﻿namespace CacheServices.Repositories;
+﻿namespace CacheService.Repositories;
 
 public class CacheServiceRepository : ICacheServiceRepository
 {

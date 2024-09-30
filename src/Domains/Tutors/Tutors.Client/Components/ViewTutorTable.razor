@@ -1,0 +1,23 @@
+﻿@namespace Tutors.Client.Components
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Username</th>
+			<th>Name</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var tutor in TutorsList)
+		{
+			<tr>
+				<td>@tutor.Username</td>
+				<td>@tutor.Name</td>
+				<td>
+					<button class="btn btn-sm btn-primary">Generate Password</button>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

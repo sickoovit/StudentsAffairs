@@ -1,44 +1,41 @@
 ﻿@page "/login"
+@using Students.Entities
 @layout LoginLayout
 
 <div class="login-container">
-    <!-- Left Section -->
-    <div class="options-container">
-        <h2>Select Your Role</h2>
-        <button class="login-btn" @onclick='() => SelectRole("Tutor")'>Tutor</button>
-        <button class="login-btn" @onclick='() => SelectRole("Student")'>Student</button>
-        <button class="login-btn" @onclick='() => SelectRole("Admin")'>Admin</button>
-        <p>Selected Role: @loginModelRole</p>
-    </div>
+	<!-- Left Section -->
+	<div class="options-container">
+		<h2>Select Your Role</h2>
+		<button class="login-btn" @onclick='() => SelectRole("Tutor")'>Tutor</button>
+		<button class="login-btn" @onclick='() => SelectRole("Student")'>Student</button>
+		<button class="login-btn" @onclick='() => SelectRole("Admin")'>Admin</button>
+		<p>Selected Role: @loginModelRole</p>
+	</div>
 
-    <!-- Right Section -->
-    <div class="form-container login-form-container">
-        <h3>Login to Your Account</h3>
-        <EditForm class="form" Model="@loginModel" OnVal
-            ubmit="HandleLogin">
-            <DataAnnotationsValidator />
-            <ValidationSummary />
+	<!-- Right Section -->
+	<div class="form-container login-form-container">
+		<h3>Login to Your Account</h3>
+		<EditForm class="form" Model="@loginModel" OnValidSubmit="HandleLogin">
+			<DataAnnotationsValidator />
+			<ValidationSummary />
 
-            <InputText @bind-Value="loginModel.Username" placeholder="Username" class="form-control login-input" />
-            <ValidationMessage For="() => loginModel.Username" />
+			<InputText @bind-Value="loginModel.Username" placeholder="Username" class="form-control login-input" />
+			<ValidationMessage For="() => loginModel.Username" />
 
-            <InputText @bind-Value="loginModel.Password" placeholder="Password" type="password" class="form-control login-input" />
-            <ValidationMessage For="() => loginModel.Password" />
+			<InputText @bind-Value="loginModel.Password" placeholder="Password" type="password" class="form-control login-input" />
+			<ValidationMessage For="() => loginModel.Password" />
 
-            <button type="submit" class="login-btn">Login</button>
-        </EditForm>
-    </div>
+			<button type="submit" class="login-btn">Login</button>
+		</EditForm>
+	</div>
 </div>
 
 @if (isSubmitted)
 {
-    <p>You submitted the form.</p>
+	<p>You submitted the form.</p>
 }
 
 @code {
-    [Inject]
-    private IUserRepository? _userRepository { get; set; }
-
     private User loginModel = new Student();
     private User loginMatch = new Student();
     private string loginModelRole = "Student";
@@ -47,17 +44,10 @@
     // Method to handle login
     private void HandleLogin()
     {
-        if (_userRepository is null)
-            throw new ArgumentNullException("_userRepository");
 
         if (!string.IsNullOrEmpty(loginModel.Username) && !string.IsNullOrEmpty(loginModel.Password))
         {
-            // Implement login logic here
-            loginMatch = _userRepository.GetUserByUsername(loginModel.Username) ?? new Student();
-            if(loginMatch.Username is not null)
-            {
-                isSubmitted = true;
-            }
+            // TODO: Implement login logic here
         }
     }
 

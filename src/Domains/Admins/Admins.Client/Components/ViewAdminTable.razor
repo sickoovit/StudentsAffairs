@@ -1,0 +1,26 @@
+﻿@namespace Admins.Client.Components
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Username</th>
+			<th>Name</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var admin in AdminsList ?? [])
+		{
+			<tr>
+				<td>@admin.Username</td>
+				<td>@admin.Name</td>
+				<td>
+					<button class="btn btn-sm btn-primary">Generate Password</button>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+
+

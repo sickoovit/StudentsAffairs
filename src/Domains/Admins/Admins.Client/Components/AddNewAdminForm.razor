@@ -1,0 +1,19 @@
+﻿<EditForm Model="@newAdmin" class="manage-entities-form">
+	<FluentValidationValidator />
+	<div>
+		<h4>Create Admin</h4>
+		<label>Username</label>
+		<InputText @bind-Value="newAdmin.Username" class="form-control" />
+		<ValidationMessage For="@(() => newAdmin.Username)" />
+
+		<label>Name</label>
+		<InputText @bind-Value="newAdmin.Name" class="form-control" />
+		<ValidationMessage For="@(() => newAdmin.Name)" />
+
+		<label>Admin Role</label>
+		<InputText @bind-Value="newAdmin.AdminRole" class="form-control" />
+		<ValidationMessage For="@(() => newAdmin.AdminRole)" />
+	</div>
+
+	<button type="submit" class="btn btn-primary">Submit</button>
+</EditForm>

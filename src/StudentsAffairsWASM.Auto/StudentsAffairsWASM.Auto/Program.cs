@@ -1,10 +1,9 @@
-using Admins.Application.Repositories;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents();
+	.AddInteractiveServerComponents()
+	.AddInteractiveWebAssemblyComponents();
 
 builder.Services.AddBlazoredSessionStorage();
 
@@ -31,18 +30,18 @@ builder.Services.AddScoped<ICourseRepository, CourseRepository<AppDbContext>>();
 builder.Services.AddScoped<IAssignmentRepository, AssignmentRepository<AppDbContext>>();
 builder.Services.AddScoped<ILectureRepository, LectureRepository<AppDbContext>>();
 
-builder.Services.AddScoped<ISessionRepository, SessionRepository>();
-
-builder.Services.AddSingleton<ICacheServiceRepository, CacheServiceRepository>();
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error", createScopeForErrors: true);
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+	app.UseWebAssemblyDebugging();
+}
+else
+{
+	app.UseExceptionHandler("/Error", createScopeForErrors: true);
+	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+	app.UseHsts();
 }
 
 app.UseHttpsRedirection();
@@ -51,6 +50,8 @@ app.UseStaticFiles();
 app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
-    .AddInteractiveServerRenderMode();
+	.AddInteractiveServerRenderMode()
+	.AddInteractiveWebAssemblyRenderMode()
+	.AddAdditionalAssemblies(typeof(StudentsAffairsWASM.Auto.Client._Imports).Assembly);
 
 app.Run();

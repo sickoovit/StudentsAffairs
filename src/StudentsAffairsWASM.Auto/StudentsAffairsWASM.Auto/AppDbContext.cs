@@ -1,6 +1,4 @@
-﻿using Admins.Application.Entities;
-
-namespace StudentsAffairsWASM.Auto;
+﻿namespace StudentsAffairsWASM.Auto;
 
 public class AppDbContext : DbContext
 {

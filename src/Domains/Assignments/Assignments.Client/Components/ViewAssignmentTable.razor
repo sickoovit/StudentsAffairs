@@ -1,6 +1,4 @@
-﻿@page "/assignments"
-
-@namespace StudentsAffairs.Server.Components.Tables
+﻿@namespace Assignments.Client.Components
 
 <h3>Assignments</h3>
 <table class="table table-striped">
@@ -14,7 +12,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach (var assignment in Assignments ?? [])
+		@foreach (var assignment in AssignmentsList ?? [])
 		{
 			<tr>
 				<td>@assignment.Title</td>
