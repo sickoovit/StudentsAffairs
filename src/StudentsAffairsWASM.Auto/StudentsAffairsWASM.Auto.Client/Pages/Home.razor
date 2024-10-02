@@ -1,14 +1,59 @@
-﻿@page "/"
+﻿@inject NavigationManager Navigation
 
 <PageTitle>Home</PageTitle>
 
-<div class="row h-100">
-	<div class="col-md-8 h-100">
-		<div class="content-box calendar">Calendar</div>
-		<div class="content-box courses">Courses & Study Material</div>
-	</div>
+<div class="container text-center mt-5">
+    <h1 class="display-4">Welcome to your EMIS</h1>
+    <p class="lead">Empowering creativity and presentations for the next generation of leaders.</p>
+    <hr class="my-4">
+    <p>Explore our courses, join our community, and start your journey today!</p>
+    
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Courses</h5>
+                    <p class="card-text">Browse through our wide selection of courses designed for aspiring creatives and innovators.</p>
+                    <button class="btn btn-primary" @onclick="GoToCourses">Explore Courses</button>
+                </div>
+            </div>
+        </div>
 
-	<div class="col-md-4">
-		<div class="content-box todo">To-Do & Notes</div>
-	</div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Join as a Student</h5>
+                    <p class="card-text">Start learning and building your skills with the support of our community and mentors.</p>
+                    <button class="btn btn-success" @onclick="GoToRegister">Register Now</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Dashboard</h5>
+                    <p class="card-text">Already a student or staff member?</p>
+                    <button class="btn btn-info" @onclick="GoToDashboard">Go To Dashboard</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+@code{
+    void GoToCourses()
+    {
+        throw new NotImplementedException();
+    }
+
+    void GoToRegister()
+    {
+        throw new NotImplementedException();
+    }
+
+    void GoToDashboard()
+    {
+        Navigation.NavigateTo("/dashboard");
+    }
+}

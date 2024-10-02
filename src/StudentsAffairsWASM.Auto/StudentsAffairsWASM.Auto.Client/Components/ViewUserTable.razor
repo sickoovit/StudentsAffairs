@@ -1,21 +1,14 @@
 ﻿@namespace StudentsAffairsWASM.Auto.Client.Components
 
-<InputSelect @bind-Value="selectedRole" class="form-control">
-	<option value="">-- Select Role --</option>
-	<option value="Student">Student</option>
-	<option value="Tutor">Tutor</option>
-	<option value="Admin">Admin</option>
-</InputSelect>
-
 @if (selectedRole == "Student")
 {
-	<ViewStudentTable/>
+	<ViewStudentTable StudentsList="UsersList.Students"/>
 }
 else if (selectedRole == "Tutor")
 {
-	<ViewTutorTable />
+	<ViewTutorTable TutorsList="UsersList.Tutors" />
 }
 else if (selectedRole == "Admin")
 {
-	<ViewAdminTable />
+	<ViewAdminTable AdminsList="UsersList.Admins" />
 }

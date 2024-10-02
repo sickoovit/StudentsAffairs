@@ -1,0 +1,19 @@
+﻿.container {
+    max-width: 960px;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+h1, .card-title {
+    font-family: 'Playfair Display', serif;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+}
+
+.btn {
+    border-radius: 25px;
+}

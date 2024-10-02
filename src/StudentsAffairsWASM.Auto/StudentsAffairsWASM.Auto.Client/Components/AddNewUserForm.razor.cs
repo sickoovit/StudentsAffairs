@@ -2,5 +2,6 @@ namespace StudentsAffairsWASM.Auto.Client.Components;
 
 public partial class AddNewUserForm
 {
-    private string selectedRole;
+	[Parameter]
+	public string selectedRole { get; set; }
 }
