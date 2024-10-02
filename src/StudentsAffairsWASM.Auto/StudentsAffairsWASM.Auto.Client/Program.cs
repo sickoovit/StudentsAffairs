@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+WebAssemblyHostBuilder webAssemblyHostBuilder = WebAssemblyHostBuilder.CreateDefault(args);
 
-var builder = WebAssemblyHostBuilder.CreateDefault(args);
-
-await builder.Build().RunAsync();
+await webAssemblyHostBuilder.Build().RunAsync();

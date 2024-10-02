@@ -1,57 +1,60 @@
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder webApplicationBuilder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorComponents()
+webApplicationBuilder.Services.AddRazorComponents()
 	.AddInteractiveServerComponents()
 	.AddInteractiveWebAssemblyComponents();
 
-builder.Services.AddBlazoredSessionStorage();
+webApplicationBuilder.Services.AddBlazoredSessionStorage();
 
-builder.Configuration.AddUserSecrets<Program>();
+webApplicationBuilder.Configuration.AddUserSecrets<Program>();
 
 string connectionStringAppDbConfigurationKey = "AppDbConnectionString";
-string connectionStringAppDb = builder.Configuration[connectionStringAppDbConfigurationKey] ??
+string connectionStringAppDb = webApplicationBuilder.Configuration[connectionStringAppDbConfigurationKey] ??
     throw new ArgumentNullException(
         paramName: "connectionStringAppDbConfigurationKey",
         message: "Connection String Couldn't Be Resolved. Configuration Key may be not valid"
     );
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(connectionStringAppDb),
-    ServiceLifetime.Scoped);
+webApplicationBuilder.Services.AddDbContext<AppDbContext>(options =>
+														  options.UseSqlServer(connectionStringAppDb)
+															     .EnableDetailedErrors()
+                                                                 .EnableSensitiveDataLogging()
+                                                                 .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking),
+                                                                 ServiceLifetime.Scoped);
 
-builder.Services.AddScoped<IUserRepository, UserRepository<AppDbContext>>();
+webApplicationBuilder.Services.AddScoped<IUserRepository, UserRepository<AppDbContext>>();
 
-builder.Services.AddScoped<IStudentRepository, StudentRepository<AppDbContext>>();
-builder.Services.AddScoped<IAdminRepository, AdminRepository<AppDbContext>>();
-builder.Services.AddScoped<ITutorRepository, TutorRepository<AppDbContext>>();
+webApplicationBuilder.Services.AddScoped<IStudentRepository, StudentRepository<AppDbContext>>();
+webApplicationBuilder.Services.AddScoped<IAdminRepository, AdminRepository<AppDbContext>>();
+webApplicationBuilder.Services.AddScoped<ITutorRepository, TutorRepository<AppDbContext>>();
 
-builder.Services.AddScoped<ICourseRepository, CourseRepository<AppDbContext>>();
-builder.Services.AddScoped<IAssignmentRepository, AssignmentRepository<AppDbContext>>();
-builder.Services.AddScoped<ILectureRepository, LectureRepository<AppDbContext>>();
+webApplicationBuilder.Services.AddScoped<ICourseRepository, CourseRepository<AppDbContext>>();
+webApplicationBuilder.Services.AddScoped<IAssignmentRepository, AssignmentRepository<AppDbContext>>();
+webApplicationBuilder.Services.AddScoped<ILectureRepository, LectureRepository<AppDbContext>>();
 
-var app = builder.Build();
+WebApplication webApplication = webApplicationBuilder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (webApplication.Environment.IsDevelopment())
 {
-	app.UseWebAssemblyDebugging();
+	webApplication.UseWebAssemblyDebugging();
 }
 else
 {
-	app.UseExceptionHandler("/Error", createScopeForErrors: true);
+	webApplication.UseExceptionHandler("/Error", createScopeForErrors: true);
 	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-	app.UseHsts();
+	webApplication.UseHsts();
 }
 
-app.UseHttpsRedirection();
+webApplication.UseHttpsRedirection();
 
-app.UseStaticFiles();
-app.UseAntiforgery();
+webApplication.UseStaticFiles();
+webApplication.UseAntiforgery();
 
-app.MapRazorComponents<App>()
+webApplication.MapRazorComponents<App>()
 	.AddInteractiveServerRenderMode()
 	.AddInteractiveWebAssemblyRenderMode()
 	.AddAdditionalAssemblies(typeof(StudentsAffairsWASM.Auto.Client._Imports).Assembly);
 
-app.Run();
+webApplication.Run();
