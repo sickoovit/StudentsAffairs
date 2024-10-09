@@ -7,7 +7,7 @@ namespace Students.Client.Components
         private Student newStudent = new();
         private async Task HandleValidSubmit()
         {
-            await StudentRepo.AddStudentAsync(newStudent);
+            await StudentRepo.AddAsync(newStudent);
             newStudent = new Student();
         }
     }

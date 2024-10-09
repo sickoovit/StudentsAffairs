@@ -1,17 +1,18 @@
-using Assignments.Entities;
-using Courses.Entities;
-using Lectures.Entities;
-using StudentsAffairsWASM.Auto.Client.DTOs;
-using System.Net.Http;
-using System.Text.Json;
+using Admins.Client.Components;
+using Students.Client.Components;
+using System.Data;
+using System.Diagnostics;
+using System.Numerics;
+using Tutors.Client.Components;
 
 namespace StudentsAffairsWASM.Auto.Client.Components.Pages;
 
 public partial class ManageEntities
 {
+	[Inject]
+	private ManageEntitiesManager _manager { get; set; }
 	private AllEntitiesDTO? data = new AllEntitiesDTO();
 
-	private string selectedRole;
 	private bool isLoading;
 
 	protected async override Task OnInitializedAsync()
@@ -26,19 +27,9 @@ public partial class ManageEntities
 		if (firstRender)
 		{
 			isLoading = true;
-            string url = "http://localhost:7207/api/ManageEntitites";
-			
-			using (HttpClient httpClient = new HttpClient()){
-				HttpResponseMessage response = await httpClient.GetAsync(url);
 
-				// Ensure success status code
-				response.EnsureSuccessStatusCode();
+			data = await _manager.GetAllEntities();
 
-				// Deserialize the response
-				string jsonResponse = await response.Content.ReadAsStringAsync();
-				data = JsonSerializer.Deserialize<AllEntitiesDTO>(jsonResponse);
-			}
-            
 			isLoading = false;
 			StateHasChanged();
 		}

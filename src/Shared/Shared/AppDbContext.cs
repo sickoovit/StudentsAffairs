@@ -1,4 +1,4 @@
-﻿namespace StudentsAffairsWASM.Auto;
+﻿namespace Shared.Data;
 
 public class AppDbContext : DbContext
 {
@@ -6,13 +6,6 @@ public class AppDbContext : DbContext
         : base(options)
     {
     }
-
-    public DbSet<Assignment> Assignments { get; set; }
-    public DbSet<Course> Courses { get; set; }
-    public DbSet<Lecture> Lectures { get; set; }
-    public DbSet<Student> Students { get; set; }
-    public DbSet<Tutor> Tutors { get; set; }
-    public DbSet<Admin> Admins { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

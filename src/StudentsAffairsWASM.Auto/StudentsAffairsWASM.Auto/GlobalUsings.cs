@@ -5,13 +5,9 @@ global using Microsoft.EntityFrameworkCore;
 global using Blazored.SessionStorage;
 global using FluentValidation;
 
-global using StudentsAffairsWASM.Auto;
-global using StudentsAffairsWASM.Auto.Helpers;
-
 global using StudentsAffairsWASM.Auto.Client.DTOs;
 
-global using Shared.Entities;
-global using Shared.Repositories;
+global using Shared.Data;
 
 global using Admins.Entities;
 global using Assignments.Entities;

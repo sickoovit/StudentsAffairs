@@ -1,9 +1,8 @@
 ﻿namespace Lectures.Repositories;
 
-public class LectureRepository<T> : Repository<Lecture>, ILectureRepository 
-    where T : DbContext
+public class LectureRepository : Repository<Lecture>, ILectureRepository 
 {
-    public LectureRepository(T context) : base(context)
+    public LectureRepository(AppDbContext context) : base(context)
     {
     }
 

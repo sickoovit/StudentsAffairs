@@ -3,13 +3,13 @@
 public class Repository<T> : IRepository<T>, IDisposable
     where T : class
 {
-	public readonly DbContext _dbContext;
-	public readonly DbSet<T> _dbSet;
+	protected readonly AppDbContext _dbContext;
+	protected readonly DbSet<T> _dbSet;
 
-	public Repository(DbContext dbContext)
+	public Repository(AppDbContext dbContext)
 	{
 		_dbContext = dbContext;
-		_dbSet = _dbContext.Set<T>();
+        _dbSet = _dbContext.Set<T>();
 	}
 
 	public async Task<IEnumerable<T>> GetAllAsync()

@@ -1,6 +1,6 @@
 ﻿namespace Materials.Entities;
 
-public partial class Material : IdEntity, IHasCourseReference
+public partial class Material : IdEntity
 {
 	public string? Title { get; set; } // Title or name of the material
 	public string? Description { get; set; } // Brief description of the material's content

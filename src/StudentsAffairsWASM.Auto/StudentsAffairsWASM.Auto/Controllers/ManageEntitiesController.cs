@@ -1,44 +1,63 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace StudentsAffairsWASM.Auto.Controllers;
 
-[Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
 [ApiController]
+[Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
 public class ManageEntitiesController : ControllerBase
 {
-    [Inject]
-    IAssignmentRepository assignmentRepository { get; set; }
-    [Inject]
-    IStudentRepository studentRepository { get; set; }
-    [Inject]
-    ITutorRepository tutorRepository { get; set; }
-    [Inject]
-    IAdminRepository adminRepository { get; set; }
-    [Inject]
-    ICourseRepository courseRepository { get; set; }
-    [Inject]
-    ILectureRepository lectureRepository { get; set; }
 
-    // GET: api/<ManageEntitiesController>
-    [HttpGet]
-    public async Task<AllEntitiesDTO> Get()
-    {
-        IEnumerable<Student> students = await studentRepository.GetAllStudentsAsync();
-        IEnumerable<Admin> admins = await adminRepository.GetAllAdminsAsync();
-        IEnumerable<Tutor> tutors = await tutorRepository.GetAllTutorsAsync();
-        IEnumerable<Assignment> assignments = await assignmentRepository.GetAllAsync();
-        IEnumerable<Course> courses = await courseRepository.GetAllAsync();
-        IEnumerable<Lecture> lectures = await lectureRepository.GetAllAsync();
+	readonly IAssignmentRepository? _assignmentRepository;
+	readonly IStudentRepository? _studentRepository;
+	readonly ITutorRepository? _tutorRepository;
+	readonly IAdminRepository? _adminRepository;
+	readonly ICourseRepository? _courseRepository;
+	readonly ILectureRepository? _lectureRepository;
 
-        UsersDTO users = new UsersDTO { 
-            Students = students,
-            Tutors = tutors,
-            Admins = admins
+	public ManageEntitiesController(
+		IAssignmentRepository assignmentRepository,
+		ICourseRepository courseRepository,
+		ILectureRepository lectureRepository,
+		IAdminRepository adminRepository,
+		IStudentRepository studentRepository,
+		ITutorRepository tutorRepository)
+	{
+		_assignmentRepository = assignmentRepository;
+		_courseRepository = courseRepository;
+		_lectureRepository = lectureRepository;
+		_adminRepository = adminRepository;
+		_studentRepository = studentRepository;
+		_tutorRepository = tutorRepository;
+	}
+
+
+
+	// GET: api/<ManageEntitiesController>
+	[HttpGet]
+	public async Task<AllEntitiesDTO> Get()
+	{
+		IEnumerable<Student> students;
+		IEnumerable<Admin> admins;
+		IEnumerable<Tutor> tutors;
+		IEnumerable<Assignment> assignments;
+		IEnumerable<Course> courses;
+		IEnumerable<Lecture> lectures;
+
+		students = await _studentRepository.GetAllAsync();
+		admins = await _adminRepository.GetAllAsync();
+		tutors = await _tutorRepository.GetAllAsync();
+		assignments = await _assignmentRepository.GetAllAsync();
+		courses = await _courseRepository.GetAllAsync();
+		lectures = await _lectureRepository.GetAllAsync();
+
+		UsersDTO users = new UsersDTO
+		{
+			Students = students,
+			Tutors = tutors,
+			Admins = admins
 		};
 
-        AllEntitiesDTO allEntities = new AllEntitiesDTO
+		AllEntitiesDTO allEntities = new AllEntitiesDTO
 		{
 			Users = users,
 			Assignments = assignments,
@@ -46,32 +65,31 @@ public class ManageEntitiesController : ControllerBase
 			Lectures = lectures
 		};
 
-        return allEntities;
-    }
+		return allEntities;
+	}
 
+	// GET api/<ManageEntititesController>/5
+	[HttpGet("{id}")]
+	public string Get(int id)
+	{
+		return "value";
+	}
 
-    // GET api/<ManageEntitiesController>/5
-    [HttpGet("{id}")]
-    public string Get(int id)
-    {
-        return "value";
-    }
+	// POST api/<ManageEntititesController>
+	[HttpPost]
+	public void Post([FromBody] string value)
+	{
+	}
 
-    // POST api/<ManageEntitiesController>
-    [HttpPost]
-    public void Post([FromBody] string value)
-    {
-    }
+	// PUT api/<ManageEntititesController>/5
+	[HttpPut("{id}")]
+	public void Put(int id, [FromBody] string value)
+	{
+	}
 
-    // PUT api/<ManageEntitiesController>/5
-    [HttpPut("{id}")]
-    public void Put(int id, [FromBody] string value)
-    {
-    }
-
-    // DELETE api/<ManageEntitiesController>/5
-    [HttpDelete("{id}")]
-    public void Delete(int id)
-    {
-    }
+	// DELETE api/<ManageEntititesController>/5
+	[HttpDelete("{id}")]
+	public void Delete(int id)
+	{
+	}
 }

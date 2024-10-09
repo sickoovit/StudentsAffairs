@@ -1,6 +1,6 @@
 ﻿namespace Todos.Entities;
 
-public partial class Todo : IdEntity, IHasStudentReference, IHasCourseReference, IHasLessonReference
+public partial class Todo : IdEntity
 {
     // Title or short description of the Todo item (e.g., "Complete Chapter 1").
     public string? Title { get; set; }

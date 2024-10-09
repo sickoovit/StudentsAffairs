@@ -8,3 +8,4 @@ global using Shared.Validators;
 global using Shared.EntityConfigurations;
 
 global using Admins.Entities;
+global using Shared.Data;

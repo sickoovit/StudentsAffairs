@@ -2,6 +2,9 @@
 global using Microsoft.AspNetCore.Components;
 global using StudentsAffairsWASM.Auto.Client.DTOs;
 global using Shared.Entities;
+global using System.Net.Http;
+
+global using StudentsAffairsWASM.Auto.Client.Managers;
 
 global using Admins.Entities;
 global using Assignments.Entities;

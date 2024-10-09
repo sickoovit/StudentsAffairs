@@ -8,7 +8,7 @@ namespace Admins.Client.Components
 
         private async Task HandleValidSubmit()
         {
-            await AdminRepo.AddAdminAsync(newAdmin);
+            await AdminRepo.AddAsync(newAdmin);
             newAdmin = new Admin();
         }
     }

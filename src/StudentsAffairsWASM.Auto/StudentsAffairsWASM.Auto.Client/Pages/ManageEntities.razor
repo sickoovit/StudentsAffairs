@@ -32,15 +32,8 @@ else
 		<div class="left-side rounded-container">
 			@if (userFormActive)
 			{
-				<InputSelect @bind-Value="selectedRole" class="form-control">
-					<option value="">-- Select Role --</option>
-					<option value="Student">Student</option>
-					<option value="Tutor">Tutor</option>
-					<option value="Admin">Admin</option>
-				</InputSelect>
-
 				<h3>Create User</h3>
-				<AddNewUserForm selectedRole="selectedRole"/>
+				<AddNewUserForm/>
 			}
 			else if (courseFormActive)
 			{
@@ -60,7 +53,7 @@ else
 		<div class="right-side rounded-container">
 			@if (userFormActive)
 			{
-				<h3>User Table</h3>            <ViewUserTable Users="users" selectedRole="selectedRole" />
+				<h3>User Table</h3>            <ViewUserTable UsersList="data.Users" selectedRole="selectedRole" />
 			}
 			else if (courseFormActive)
 			{

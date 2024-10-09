@@ -1,10 +1,5 @@
 ﻿namespace Admins.Repositories;
 
-public interface IAdminRepository
+public interface IAdminRepository : IRepository<Admin>
 {
-    Task<IEnumerable<Admin>> GetAllAdminsAsync();
-    Task<Admin?> GetAdminByIdAsync(Guid adminId);
-    Task AddAdminAsync(Admin admin);
-    Task UpdateAdminAsync(Admin admin);
-    Task DeleteAdminAsync(Guid adminId);
 }

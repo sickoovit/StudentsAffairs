@@ -1,3 +1,5 @@
+using StudentsAffairsWASM.Auto.Client.Managers;
+
 WebApplicationBuilder webApplicationBuilder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +7,7 @@ webApplicationBuilder.Services.AddRazorComponents()
 	.AddInteractiveServerComponents()
 	.AddInteractiveWebAssemblyComponents();
 
+webApplicationBuilder.Services.AddControllers();
 webApplicationBuilder.Services.AddBlazoredSessionStorage();
 
 webApplicationBuilder.Configuration.AddUserSecrets<Program>();
@@ -23,15 +26,17 @@ webApplicationBuilder.Services.AddDbContext<AppDbContext>(options =>
                                                                  .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking),
                                                                  ServiceLifetime.Scoped);
 
-webApplicationBuilder.Services.AddScoped<IUserRepository, UserRepository<AppDbContext>>();
+webApplicationBuilder.Services.AddScoped<IStudentRepository, StudentRepository>();
+webApplicationBuilder.Services.AddScoped<IAdminRepository, AdminRepository>();
+webApplicationBuilder.Services.AddScoped<ITutorRepository, TutorRepository>();
 
-webApplicationBuilder.Services.AddScoped<IStudentRepository, StudentRepository<AppDbContext>>();
-webApplicationBuilder.Services.AddScoped<IAdminRepository, AdminRepository<AppDbContext>>();
-webApplicationBuilder.Services.AddScoped<ITutorRepository, TutorRepository<AppDbContext>>();
+webApplicationBuilder.Services.AddScoped<ICourseRepository, CourseRepository>();
+webApplicationBuilder.Services.AddScoped<IAssignmentRepository, AssignmentRepository>();
+webApplicationBuilder.Services.AddScoped<ILectureRepository, LectureRepository>();
 
-webApplicationBuilder.Services.AddScoped<ICourseRepository, CourseRepository<AppDbContext>>();
-webApplicationBuilder.Services.AddScoped<IAssignmentRepository, AssignmentRepository<AppDbContext>>();
-webApplicationBuilder.Services.AddScoped<ILectureRepository, LectureRepository<AppDbContext>>();
+webApplicationBuilder.Services.AddHttpClient();
+
+webApplicationBuilder.Services.AddScoped<ManageEntitiesManager>();
 
 WebApplication webApplication = webApplicationBuilder.Build();
 
@@ -48,6 +53,10 @@ else
 }
 
 webApplication.UseHttpsRedirection();
+
+webApplication.UseCors();
+
+webApplication.MapControllers();
 
 webApplication.UseStaticFiles();
 webApplication.UseAntiforgery();

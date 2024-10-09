@@ -1,6 +1,6 @@
 ﻿namespace AssignmentSubmissions.Entities;
 
-public partial class AssignmentSubmission : IdEntity, IHasStudentReference, IHasAssignmentReference
+public partial class AssignmentSubmission : IdEntity
 {
     // The date when the assignment was submitted.
     public DateTime SubmittedAt { get; set; }

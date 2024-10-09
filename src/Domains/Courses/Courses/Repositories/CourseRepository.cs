@@ -1,9 +1,8 @@
 ﻿namespace Courses.Repositories;
 
-public class CourseRepository<T> : Repository<Course>, ICourseRepository
-    where T : DbContext
+public class CourseRepository : Repository<Course>, ICourseRepository
 {
-    public CourseRepository(T context) : base(context)
+    public CourseRepository(AppDbContext context) : base(context)
     {
     }
 

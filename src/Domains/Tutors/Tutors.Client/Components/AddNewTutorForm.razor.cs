@@ -7,7 +7,7 @@ namespace Tutors.Client.Components
 
 		private async Task HandleValidSubmit()
 		{
-			await TutorRepo.AddTutorAsync(newTutor);
+			await TutorRepo.AddAsync(newTutor);
 			newTutor = new Tutor();
 		}
 	}

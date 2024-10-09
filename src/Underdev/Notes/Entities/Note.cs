@@ -1,6 +1,6 @@
 ﻿namespace Notes.Entities;
 
-public partial class Note : IdEntity, IHasCourseReference, IHasLessonReference
+public partial class Note : IdEntity
 {
     // The content or text of the note.
     public string? Content { get; set; }

@@ -1,9 +1,8 @@
 ﻿namespace Shared.Repositories;
 
-public class UserRepository<T> : Repository<User>, IUserRepository
-    where T : DbContext
+public class UserRepository : Repository<User>, IUserRepository
 {
-	public UserRepository(T context) : base(context)
+	public UserRepository(AppDbContext context) : base(context)
     {
     }
 

@@ -2,12 +2,7 @@
 
 namespace Students.Repositories;
 
-public interface IStudentRepository
+public interface IStudentRepository : IRepository<Student>
 {
-    Task<IEnumerable<Student>> GetAllStudentsAsync();
-    Task<Student?> GetStudentByIdAsync(Guid studentId);
-    Task AddStudentAsync(Student student);
-    Task UpdateStudentAsync(Student student);
-    Task DeleteStudentAsync(Guid studentId);
     Task<IEnumerable<Student>> GetStudentsByCourseAsync(Guid courseId);
 }
