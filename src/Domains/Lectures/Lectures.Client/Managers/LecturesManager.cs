@@ -13,34 +13,34 @@ public class LecturesManager
 		_httpClient = httpClient;
 	}
 
-	public async Task<IEnumerable<Lecture>> GetTutors()
+	public async Task<IEnumerable<Lecture>> GetLectures()
 	{
 		try
 		{
-			string url = ManageEntitiesApiEndpoints.GetTutors.GetUrl();
+			string url = ManageEntitiesApiEndpoints.GetLectures.GetUrl();
 			IEnumerable<Lecture> data = await _httpClient.GetFromJsonAsync<IEnumerable<Lecture>>(url);
 			return data;
 		}
 		catch (Exception ex)
 		{
 			// Handle exception (log it, show a message, etc.)
-			Console.WriteLine($"Error fetching tutors: {ex.Message}");
+			Console.WriteLine($"Error fetching lectures: {ex.Message}");
 			return null; // Or throw if you'd rather handle it upstream
 		}
 	}
 
-	public async Task<IEnumerable<Lecture>> GetCourses()
+	public async Task<IEnumerable<Course>> GetCourses()
 	{
 		try
 		{
 			string url = ManageEntitiesApiEndpoints.GetCourses.GetUrl();
-			IEnumerable<Lecture> data = await _httpClient.GetFromJsonAsync<IEnumerable<Lecture>>(url);
+			IEnumerable<Course> data = await _httpClient.GetFromJsonAsync<IEnumerable<Course>>(url);
 			return data;
 		}
 		catch (Exception ex)
 		{
 			// Handle exception (log it, show a message, etc.)
-			Console.WriteLine($"Error fetching tutors: {ex.Message}");
+			Console.WriteLine($"Error fetching courses: {ex.Message}");
 			return null; // Or throw if you'd rather handle it upstream
 		}
 	}
