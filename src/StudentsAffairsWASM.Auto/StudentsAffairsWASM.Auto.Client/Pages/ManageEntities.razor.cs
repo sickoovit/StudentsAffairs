@@ -1,10 +1,3 @@
-using Admins.Client.Components;
-using Students.Client.Components;
-using System.Data;
-using System.Diagnostics;
-using System.Numerics;
-using Tutors.Client.Components;
-
 namespace StudentsAffairsWASM.Auto.Client.Components.Pages;
 
 public partial class ManageEntities

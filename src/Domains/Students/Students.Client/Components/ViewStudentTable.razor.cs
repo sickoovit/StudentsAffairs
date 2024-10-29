@@ -1,8 +1,16 @@
-namespace Students.Client.Components
+using Students.Client.Managers;
+
+namespace Students.Client.Components;
+
+public partial class ViewStudentTable
 {
-	public partial class ViewStudentTable
+	[Inject]
+	private StudentsManager _studentsManager { get; set; }
+	private IEnumerable<Student> StudentsList = [];
+
+	protected async override Task OnInitializedAsync()
 	{
-		[Parameter]
-		public IEnumerable<Student>? StudentsList { get; set; }
+		StudentsList = await _studentsManager.GetStudents();
+		await base.OnInitializedAsync();
 	}
 }

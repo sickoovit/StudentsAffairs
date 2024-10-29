@@ -63,6 +63,7 @@
     <ProjectReference Include="..\..\Domains\Lectures\Lectures.Client\Lectures.Client.csproj" />
     <ProjectReference Include="..\..\Domains\Students\Students.Client\Students.Client.csproj" />
     <ProjectReference Include="..\..\Domains\Tutors\Tutors.Client\Tutors.Client.csproj" />
+    <ProjectReference Include="..\..\Services\CacheServices\Cache.csproj" />
   </ItemGroup>
 
 </Project>

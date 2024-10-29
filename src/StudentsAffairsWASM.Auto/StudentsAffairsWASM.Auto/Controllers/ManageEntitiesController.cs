@@ -6,88 +6,42 @@ namespace StudentsAffairsWASM.Auto.Controllers;
 [Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
 public class ManageEntitiesController : ControllerBase
 {
+	private readonly ManageEntitiesService _manageEntitiesService;
 
-	readonly IAssignmentRepository? _assignmentRepository;
-	readonly IStudentRepository? _studentRepository;
-	readonly ITutorRepository? _tutorRepository;
-	readonly IAdminRepository? _adminRepository;
-	readonly ICourseRepository? _courseRepository;
-	readonly ILectureRepository? _lectureRepository;
-
-	public ManageEntitiesController(
-		IAssignmentRepository assignmentRepository,
-		ICourseRepository courseRepository,
-		ILectureRepository lectureRepository,
-		IAdminRepository adminRepository,
-		IStudentRepository studentRepository,
-		ITutorRepository tutorRepository)
+	public ManageEntitiesController(ManageEntitiesService manageEntitiesService)
 	{
-		_assignmentRepository = assignmentRepository;
-		_courseRepository = courseRepository;
-		_lectureRepository = lectureRepository;
-		_adminRepository = adminRepository;
-		_studentRepository = studentRepository;
-		_tutorRepository = tutorRepository;
+		_manageEntitiesService = manageEntitiesService;
 	}
 
-
-
-	// GET: api/<ManageEntitiesController>
 	[HttpGet]
-	public async Task<AllEntitiesDTO> Get()
-	{
-		IEnumerable<Student> students;
-		IEnumerable<Admin> admins;
-		IEnumerable<Tutor> tutors;
-		IEnumerable<Assignment> assignments;
-		IEnumerable<Course> courses;
-		IEnumerable<Lecture> lectures;
+	public async Task<AllEntitiesDTO> GetAllEntities() => await _manageEntitiesService.GetAllEntitiesAsync();
+	
+	[HttpGet("students")]
+	public async Task<IEnumerable<Student>> GetStudents() => await _manageEntitiesService.GetStudentsAsync();
+	[HttpGet("admins")]
+	public async Task<IEnumerable<Admin>> GetAdmins() => await _manageEntitiesService.GetAdminsAsync();
+	[HttpGet("tutors")]
+	public async Task<IEnumerable<Tutor>> GetTutors() => await _manageEntitiesService.GetTutorsAsync();
+	[HttpGet("courses")]
+	public async Task<IEnumerable<Course>> GetCourses() => await _manageEntitiesService.GetCoursesAsync();
+	[HttpGet("assignments")]
+	public async Task<IEnumerable<Assignment>> GetAssignments() => await _manageEntitiesService.GetAssignmentsAsync();
+	[HttpGet("lectures")]
+	public async Task<IEnumerable<Lecture>> GetLectures() => await _manageEntitiesService.GetLecturesAsync();
 
-		students = await _studentRepository.GetAllAsync();
-		admins = await _adminRepository.GetAllAsync();
-		tutors = await _tutorRepository.GetAllAsync();
-		assignments = await _assignmentRepository.GetAllAsync();
-		courses = await _courseRepository.GetAllAsync();
-		lectures = await _lectureRepository.GetAllAsync();
-
-		UsersDTO users = new UsersDTO
-		{
-			Students = students,
-			Tutors = tutors,
-			Admins = admins
-		};
-
-		AllEntitiesDTO allEntities = new AllEntitiesDTO
-		{
-			Users = users,
-			Assignments = assignments,
-			Courses = courses,
-			Lectures = lectures
-		};
-
-		return allEntities;
-	}
-
-	// GET api/<ManageEntititesController>/5
 	[HttpGet("{id}")]
-	public string Get(int id)
-	{
-		return "value";
-	}
+	public string Get(int id) => "value";
 
-	// POST api/<ManageEntititesController>
 	[HttpPost]
 	public void Post([FromBody] string value)
 	{
 	}
 
-	// PUT api/<ManageEntititesController>/5
 	[HttpPut("{id}")]
 	public void Put(int id, [FromBody] string value)
 	{
 	}
 
-	// DELETE api/<ManageEntititesController>/5
 	[HttpDelete("{id}")]
 	public void Delete(int id)
 	{

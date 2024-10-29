@@ -1,4 +1,4 @@
-using StudentsAffairsWASM.Auto.Client.Managers;
+using Tutors.Client.Managers;
 
 WebApplicationBuilder webApplicationBuilder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +26,8 @@ webApplicationBuilder.Services.AddDbContext<AppDbContext>(options =>
                                                                  .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking),
                                                                  ServiceLifetime.Scoped);
 
+webApplicationBuilder.Services.AddSingleton<ICacheService, CacheService>();
+
 webApplicationBuilder.Services.AddScoped<IStudentRepository, StudentRepository>();
 webApplicationBuilder.Services.AddScoped<IAdminRepository, AdminRepository>();
 webApplicationBuilder.Services.AddScoped<ITutorRepository, TutorRepository>();
@@ -36,7 +38,9 @@ webApplicationBuilder.Services.AddScoped<ILectureRepository, LectureRepository>(
 
 webApplicationBuilder.Services.AddHttpClient();
 
+webApplicationBuilder.Services.AddScoped<ManageEntitiesService>();
 webApplicationBuilder.Services.AddScoped<ManageEntitiesManager>();
+webApplicationBuilder.Services.AddScoped<TutorsManager>();
 
 WebApplication webApplication = webApplicationBuilder.Build();
 

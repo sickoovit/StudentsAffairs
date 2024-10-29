@@ -1,8 +1,16 @@
-namespace Tutors.Client.Components
+using Tutors.Client.Managers;
+
+namespace Tutors.Client.Components;
+
+public partial class ViewTutorTable
 {
-	public partial class ViewTutorTable
+	[Inject]
+	private TutorsManager _tutorsManager { get; set; }
+	private IEnumerable<Tutor> TutorsList = [];
+
+	protected async override Task OnInitializedAsync()
 	{
-		[Parameter]
-		public IEnumerable<Tutor>? TutorsList { get; set; }
+		TutorsList = await _tutorsManager.GetTutors();
+		await base.OnInitializedAsync();
 	}
 }

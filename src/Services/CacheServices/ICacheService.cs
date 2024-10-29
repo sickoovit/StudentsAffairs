@@ -1,6 +1,6 @@
-﻿namespace CacheService.Repositories;
+﻿namespace Cache;
 
-public interface ICacheServiceRepository
+public interface ICacheService
 {
     T UpdateOrAdd<T>(string key, Func<T> fetchFunction);
     T GetOrAdd<T>(string key, Func<T> fetchFunction);
