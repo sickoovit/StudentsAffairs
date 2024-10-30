@@ -1,20 +1,29 @@
+using Lectures.Client.Managers;
+
 namespace Lectures.Client.Components;
 
 public partial class AddNewLectureForm
 {
-    private Lecture newLecture = new Lecture
+	[Inject]
+    private ILecturesManager? LecturesManager { get; set; }
+	[Inject]
+	private ILectureRepository LectureRepository { get; set; }
+
+	private IEnumerable<Course> CoursesList = [];
+	private Lecture newLecture = new Lecture
     {
         ScheduledDate = DateTime.Now
     };
 
-    [Parameter]
-    public IEnumerable<Course> Courses { get; set; }
-
-    [Inject] private ILectureRepository LectureRepo { get; set; }
+	protected async override Task OnInitializedAsync()
+	{
+		CoursesList = await LecturesManager.GetCourses();
+		await base.OnInitializedAsync();
+	}
 
     private async Task AddLecture()
     {
-        await LectureRepo.AddAsync(newLecture);
+        await LectureRepository.AddAsync(newLecture);
         newLecture = new Lecture(); // Reset the form
     }
 

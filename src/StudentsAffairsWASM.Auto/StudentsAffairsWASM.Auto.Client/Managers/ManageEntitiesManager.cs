@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Json;
 
 namespace StudentsAffairsWASM.Auto.Client.Managers;
-public class ManageEntitiesManager
+public class ManageEntitiesManager : IManageEntitiesManager
 {
 	private readonly HttpClient _httpClient;
 

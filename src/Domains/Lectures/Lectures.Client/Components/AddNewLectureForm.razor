@@ -31,7 +31,7 @@
 
     <div class="mb-3">
         <InputSelect id="course" class="form-control" @bind-Value="newLecture.CourseId">
-            @foreach (var course in Courses)
+            @foreach (var course in CoursesList)
             {
                 <option value="@course.Id">@course.Title</option>
             }

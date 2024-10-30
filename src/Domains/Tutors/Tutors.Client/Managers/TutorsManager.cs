@@ -3,7 +3,7 @@ using Shared.Helpers;
 using System.Net.Http.Json;
 
 namespace Tutors.Client.Managers;
-public class TutorsManager
+public class TutorsManager : ITutorsManager
 {
 	private readonly HttpClient _httpClient;
 

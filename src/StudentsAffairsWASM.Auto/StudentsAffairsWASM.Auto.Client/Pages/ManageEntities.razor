@@ -33,7 +33,13 @@ else
 			@if (userFormActive)
 			{
 				<h3>Create User</h3>
-				<AddNewUserForm/>
+				<InputSelect @bind-Value="selectedRole" class="form-control">
+					<option value="">-- Select Role --</option>
+					<option value="Student">Student</option>
+					<option value="Tutor">Tutor</option>
+					<option value="Admin">Admin</option>
+				</InputSelect>
+				<AddNewUserForm SelectedRole=selectedRole/>
 			}
 			else if (courseFormActive)
 			{
@@ -41,11 +47,11 @@ else
 			}
 			else if (lectureFormActive)
 			{
-				<h3>Create Lecture</h3>            <AddNewLectureForm Courses="data.Courses" />
+				<h3>Create Lecture</h3>            <AddNewLectureForm />
 			}
 			else if (assignmentFormActive)
 			{
-				<h3>Create Assignment</h3>            <AddNewAssignmentForm Courses="data.Courses" />
+				<h3>Create Assignment</h3>            <AddNewAssignmentForm />
 			}
 		</div>
 
@@ -53,21 +59,21 @@ else
 		<div class="right-side rounded-container">
 			@if (userFormActive)
 			{
-				<h3>User Table</h3>            <ViewUserTable UsersList="data.Users" selectedRole="selectedRole" />
+				<h3>User Table</h3>            <ViewUserTable SelectedRole="selectedRole" />
 			}
 			else if (courseFormActive)
 			{
 				<h3>Course Table</h3>
-				<ViewCourseTable Courses="data.Courses" />
+				<ViewCourseTable />
 			}
 			else if (lectureFormActive)
 			{
-				<h3>Lecture Table</h3>            <ViewLectureTable Lectures="data.Lectures" />
+				<h3>Lecture Table</h3>            <ViewLectureTable />
 			}
 			else if (assignmentFormActive)
 			{
 				<h3>Assignment Table</h3>
-				<ViewAssignmentTable Assignments="data.Assignments" />
+				<ViewAssignmentTable />
 			}
 		</div>
 	</div>

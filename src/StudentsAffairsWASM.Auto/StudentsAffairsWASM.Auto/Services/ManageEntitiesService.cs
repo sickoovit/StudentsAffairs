@@ -1,6 +1,6 @@
 ﻿namespace StudentsAffairsWASM.Auto.Services;
 
-public class ManageEntitiesService
+public class ManageEntitiesService : IManageEntitiesService
 {
 	private readonly IStudentRepository _studentRepository;
 	private readonly IAdminRepository _adminRepository;
@@ -54,21 +54,21 @@ public class ManageEntitiesService
 		await GetLecturesAsync();
 	}
 
-	public async Task<IEnumerable<Student>> GetStudentsAsync() => 
+	public async Task<IEnumerable<Student>> GetStudentsAsync() =>
 		await _cacheService.GetOrAddAsync("students", _studentRepository.GetAllAsync);
 
-	public async Task<IEnumerable<Admin>> GetAdminsAsync() => 
+	public async Task<IEnumerable<Admin>> GetAdminsAsync() =>
 		await _cacheService.GetOrAddAsync("admins", _adminRepository.GetAllAsync);
 
-	public async Task<IEnumerable<Tutor>> GetTutorsAsync() => 
+	public async Task<IEnumerable<Tutor>> GetTutorsAsync() =>
 		await _cacheService.GetOrAddAsync("tutors", _tutorRepository.GetAllAsync);
 
-	public async Task<IEnumerable<Assignment>> GetAssignmentsAsync() => 
+	public async Task<IEnumerable<Assignment>> GetAssignmentsAsync() =>
 		await _cacheService.GetOrAddAsync("assignments", _assignmentRepository.GetAllAsync);
 
-	public async Task<IEnumerable<Course>> GetCoursesAsync() => 
+	public async Task<IEnumerable<Course>> GetCoursesAsync() =>
 		await _cacheService.GetOrAddAsync("courses", _courseRepository.GetAllAsync);
 
-	public async Task<IEnumerable<Lecture>> GetLecturesAsync() => 
+	public async Task<IEnumerable<Lecture>> GetLecturesAsync() =>
 		await _cacheService.GetOrAddAsync("lectures", _lectureRepository.GetAllAsync);
 }

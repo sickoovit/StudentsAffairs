@@ -3,10 +3,11 @@ namespace StudentsAffairsWASM.Auto.Client.Components.Pages;
 public partial class ManageEntities
 {
 	[Inject]
-	private ManageEntitiesManager _manager { get; set; }
+	private IManageEntitiesManager ManageEntitiesManager { get; set; }
 	private AllEntitiesDTO? data = new AllEntitiesDTO();
 
 	private bool isLoading;
+	private string selectedRole = "";
 
 	protected async override Task OnInitializedAsync()
 	{
@@ -21,7 +22,7 @@ public partial class ManageEntities
 		{
 			isLoading = true;
 
-			data = await _manager.GetAllEntities();
+			data = await ManageEntitiesManager.GetAllEntities();
 
 			isLoading = false;
 			StateHasChanged();

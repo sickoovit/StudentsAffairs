@@ -4,22 +4,15 @@
 @using Tutors.Client.Components
 @using Admins.Client.Components
 
-<InputSelect @bind-Value="selectedRole" class="form-control">
-	<option value="">-- Select Role --</option>
-	<option value="Student">Student</option>
-	<option value="Tutor">Tutor</option>
-	<option value="Admin">Admin</option>
-</InputSelect>
-
-@if (selectedRole == "Student")
+@if (SelectedRole == "Student")
 {
 	<AddNewStudentForm/>
 }
-else if (selectedRole == "Tutor")
+else if (SelectedRole == "Tutor")
 {
 	<AddNewTutorForm/>
 }
-else if (selectedRole == "Admin")
+else if (SelectedRole == "Admin")
 {
 	<AddNewAdminForm/>
 }

@@ -26,3 +26,10 @@ global using Lectures.Repositories;
 global using Students.Repositories;
 global using Tutors.Repositories;
 
+global using Admins.Client.Managers;
+global using Assignments.Client.Managers;
+global using Courses.Client.Managers;
+global using Lectures.Client.Managers;
+global using Students.Client.Managers;
+global using Tutors.Client.Managers;
+

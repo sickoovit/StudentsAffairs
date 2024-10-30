@@ -1,8 +1,17 @@
+using Admins.Client.Managers;
+
 namespace Admins.Client.Components
 {
 	public partial class ViewAdminTable
 	{
-		[Parameter]
-		public IEnumerable<Admin>? AdminsList { get; set; }
+		[Inject]
+		private IAdminsManager AdminsManager { get; set; }
+		private IEnumerable<Admin> AdminsList = [];
+
+		protected async override Task OnInitializedAsync()
+		{
+			AdminsList = await AdminsManager.GetAdmins();
+			await base.OnInitializedAsync();
+		}
 	}
 }

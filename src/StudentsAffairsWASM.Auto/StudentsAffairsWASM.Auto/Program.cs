@@ -1,5 +1,3 @@
-using Tutors.Client.Managers;
-
 WebApplicationBuilder webApplicationBuilder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -38,9 +36,14 @@ webApplicationBuilder.Services.AddScoped<ILectureRepository, LectureRepository>(
 
 webApplicationBuilder.Services.AddHttpClient();
 
-webApplicationBuilder.Services.AddScoped<ManageEntitiesService>();
-webApplicationBuilder.Services.AddScoped<ManageEntitiesManager>();
-webApplicationBuilder.Services.AddScoped<TutorsManager>();
+webApplicationBuilder.Services.AddScoped<IManageEntitiesService, ManageEntitiesService>();
+webApplicationBuilder.Services.AddScoped<IManageEntitiesManager,ManageEntitiesManager>();
+webApplicationBuilder.Services.AddScoped<IAdminsManager, AdminsManager>();
+webApplicationBuilder.Services.AddScoped<IAssignmentsManager,AssignmentsManager>();
+webApplicationBuilder.Services.AddScoped<ICoursesManager, CoursesManager>();
+webApplicationBuilder.Services.AddScoped<ILecturesManager, LecturesManager>();
+webApplicationBuilder.Services.AddScoped<IStudentsManager, StudentsManager>();
+webApplicationBuilder.Services.AddScoped<ITutorsManager, TutorsManager>();
 
 WebApplication webApplication = webApplicationBuilder.Build();
 
@@ -52,7 +55,6 @@ if (webApplication.Environment.IsDevelopment())
 else
 {
 	webApplication.UseExceptionHandler("/Error", createScopeForErrors: true);
-	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 	webApplication.UseHsts();
 }
 

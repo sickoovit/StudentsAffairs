@@ -1,3 +1,5 @@
+using Assignments.Client.Managers;
+
 namespace Assignments.Client.Components;
 
 public partial class AddNewAssignmentForm
@@ -8,11 +10,18 @@ public partial class AddNewAssignmentForm
         CreatedAt = DateTime.Now
     };
 
-    [Parameter]
-    public IEnumerable<Course> Courses { get; set; }
+	[Inject]
+	private IAssignmentsManager AssignmentsManager { get; set; }
+	private IEnumerable<Course> CoursesList = [];
+
+	protected async override Task OnInitializedAsync()
+	{
+		CoursesList = await AssignmentsManager.GetCourses();
+		await base.OnInitializedAsync();
+	}
 
 
-    [Inject] private IAssignmentRepository AssignmentRepo { get; set; }
+	[Inject] private IAssignmentRepository AssignmentRepo { get; set; }
 
     private async Task AddAssignment()
     {
