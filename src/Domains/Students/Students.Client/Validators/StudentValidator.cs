@@ -1,4 +1,7 @@
-﻿namespace Students.Validators;
+﻿using FluentValidation;
+using Shared.Client.Validators;
+
+namespace Students.Client.Validators;
 
 public class StudentValidator : AbstractValidator<Student>
 {
@@ -9,6 +12,7 @@ public class StudentValidator : AbstractValidator<Student>
 
         // Validating Age (must be between 16 and 120)
         RuleFor(student => student.Age)
+            .NotEmpty().WithMessage("Age is required.")
             .InclusiveBetween(16, 120).WithMessage("Age must be between 16 and 120.");
 
         // Validating EnrollmentDate (must be in the past or today)

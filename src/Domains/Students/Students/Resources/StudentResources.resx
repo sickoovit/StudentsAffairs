@@ -121,9 +121,9 @@
     <value>Age</value>
   </data>
   <data name="EnrollmentDate" xml:space="preserve">
-    <value>EnrollmentDate</value>
+    <value>Enrollment Date</value>
   </data>
   <data name="GraduationDate" xml:space="preserve">
-    <value>GraduationDate</value>
+    <value>Graduation Date</value>
   </data>
 </root>

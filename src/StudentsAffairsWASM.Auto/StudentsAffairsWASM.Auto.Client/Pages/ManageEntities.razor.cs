@@ -71,4 +71,14 @@ public partial class ManageEntities
 		assignmentFormActive = true;
 		StateHasChanged();
 	}
+
+	private void UserTypeChanged(string value)
+	{
+		selectedRole = value ?? "";
+		StateHasChanged();
+	}
+	private string getSelectedRole()
+	{
+		return selectedRole;
+	}
 }

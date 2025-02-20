@@ -70,7 +70,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EnrollmentDate.
+        ///   Looks up a localized string similar to Enrollment Date.
         /// </summary>
         public static string EnrollmentDate {
             get {
@@ -79,7 +79,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GraduationDate.
+        ///   Looks up a localized string similar to Graduation Date.
         /// </summary>
         public static string GraduationDate {
             get {

@@ -1,5 +1,7 @@
-﻿namespace Shared.Validators;
+﻿namespace Shared.Client.Validators;
 
+using FluentValidation;
+using Shared.Entities;
 public class UserValidator : AbstractValidator<User>
 {
     public UserValidator()
@@ -7,8 +9,12 @@ public class UserValidator : AbstractValidator<User>
         RuleFor(user => user.Username)
             .NotEmpty().WithMessage("Username is required.")
             .MinimumLength(5).WithMessage("Username must be at least 5 characters long.");
+		
+        RuleFor(user => user.Name)
+			.NotEmpty().WithMessage("Name is required.")
+			.MinimumLength(3).WithMessage("Name must be at least 3 characters long.");
 
-        RuleFor(user => user.Email)
+		RuleFor(user => user.Email)
             .NotEmpty().WithMessage("Email is required.")
             .EmailAddress().WithMessage("Invalid email format.");
 

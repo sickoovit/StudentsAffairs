@@ -1,19 +1,30 @@
-﻿<EditForm Model="@newStudent" class="manage-entities-form">
+﻿<EditForm OnValidSubmit="@HandleValidSubmit" Model="@newStudent" class="manage-entities-form">
     <FluentValidationValidator/>
-        <div>
-            <h4>Create Student</h4>
-            <label>Username</label>
-            <InputText @bind-Value="newStudent.Username" class="form-control" />
-            <ValidationMessage For="@(() => newStudent.Username)" />
 
-            <label>Name</label>
-            <InputText @bind-Value="newStudent.Name" class="form-control" />
-            <ValidationMessage For="@(() => newStudent.Name)" />
+    <div>
+        <label>Username</label>
+        <InputText @bind-Value="newStudent.Username" class="form-control" />
+        <ValidationMessage For="@(() => newStudent.Username)" />
 
-            <label>Age</label>
-            <InputNumber @bind-Value="newStudent.Age" class="form-control" />
-            <ValidationMessage For="@(() => newStudent.Age)" />
-        </div>
+        <label>Name</label>
+        <InputText @bind-Value="newStudent.Name" class="form-control" />
+        <ValidationMessage For="@(() => newStudent.Name)" />
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </EditForm>
+        <label>Age</label>
+        <InputNumber @bind-Value="newStudent.Age" class="form-control" />
+        <ValidationMessage For="@(() => newStudent.Age)" />
+
+        <input type="button" @onclick="UpdateEmail" class="btn btn-primary" value="Generate Credintials">
+
+        <br/>
+
+        <label>Email</label>
+        <InputText disabled=true @bind-Value="newStudent.Email" class="form-control" />
+        <ValidationMessage For="@(() => newStudent.Email)" />
+
+        <label>Password</label>
+        <InputText disabled=true @bind-Value="newStudent.Password" class="form-control" />
+        <ValidationMessage For="@(() => newStudent.Password)" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</EditForm>

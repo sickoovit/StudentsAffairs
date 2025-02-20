@@ -28,30 +28,32 @@ else
 		</li>
 	</ul>
 	<div class="split-container">
-		<!-- Left Side - Form -->
 		<div class="left-side rounded-container">
 			@if (userFormActive)
 			{
-				<h3>Create User</h3>
+				<h3>Create @selectedRole</h3>
 				<InputSelect @bind-Value="selectedRole" class="form-control">
 					<option value="">-- Select Role --</option>
 					<option value="Student">Student</option>
 					<option value="Tutor">Tutor</option>
 					<option value="Admin">Admin</option>
 				</InputSelect>
-				<AddNewUserForm SelectedRole=selectedRole/>
+				<AddNewUserForm SelectedRole=@selectedRole/>
 			}
 			else if (courseFormActive)
 			{
-				<h3>Create Course</h3>            <AddNewCourseForm />
+				<h3>Create Course</h3>
+				<AddNewCourseForm />
 			}
 			else if (lectureFormActive)
 			{
-				<h3>Create Lecture</h3>            <AddNewLectureForm />
+				<h3>Create Lecture</h3>
+				<AddNewLectureForm />
 			}
 			else if (assignmentFormActive)
 			{
-				<h3>Create Assignment</h3>            <AddNewAssignmentForm />
+				<h3>Create Assignment</h3>
+				<AddNewAssignmentForm />
 			}
 		</div>
 
@@ -59,7 +61,8 @@ else
 		<div class="right-side rounded-container">
 			@if (userFormActive)
 			{
-				<h3>User Table</h3>            <ViewUserTable SelectedRole="selectedRole" />
+				<h3>@selectedRole Table</h3>
+				<ViewUserTable SelectedRole=@selectedRole />
 			}
 			else if (courseFormActive)
 			{
@@ -68,7 +71,8 @@ else
 			}
 			else if (lectureFormActive)
 			{
-				<h3>Lecture Table</h3>            <ViewLectureTable />
+				<h3>Lecture Table</h3>
+				<ViewLectureTable />
 			}
 			else if (assignmentFormActive)
 			{

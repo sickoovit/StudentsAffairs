@@ -1,7 +1,4 @@
-﻿namespace Tutors.Validators;
-
-using FluentValidation;
-using Tutors.Entities;
+﻿namespace Tutors.Client.Validators;
 
 public class TutorValidator : AbstractValidator<Tutor>
 {

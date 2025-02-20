@@ -27,4 +27,16 @@ public class StudentsManager : IStudentsManager
 			return null; // Or throw if you'd rather handle it upstream
 		}
 	}
+	public async Task AddStudent(Student studentToBeAdded)
+	{
+		try
+		{
+			string url = ManageEntitiesApiEndpoints.GetStudents.GetUrl();
+			await _httpClient.PostAsJsonAsync(url, studentToBeAdded);
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine($"Error fetching tutors: {ex.Message}");
+		}
+	}
 }

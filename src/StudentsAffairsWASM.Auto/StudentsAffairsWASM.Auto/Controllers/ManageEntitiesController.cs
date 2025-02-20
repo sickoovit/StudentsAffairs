@@ -29,6 +29,8 @@ public class ManageEntitiesController : ControllerBase
 	[HttpGet("lectures")]
 	public async Task<IEnumerable<Lecture>> GetLectures() => await ManageEntitiesService.GetLecturesAsync();
 
+	[HttpPost("students")]
+	public void AddStudent([FromBody] Student newStudent) => Console.WriteLine(newStudent);
 	[HttpPost]
 	public void Post([FromBody] string value)
 	{

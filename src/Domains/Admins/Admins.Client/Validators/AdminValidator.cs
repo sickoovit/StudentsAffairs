@@ -1,4 +1,4 @@
-﻿namespace Admins.Validators;
+﻿namespace Admins.Client.Validators;
 
 public class AdminValidator : AbstractValidator<Admin>
 {

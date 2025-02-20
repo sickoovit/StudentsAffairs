@@ -18,3 +18,5 @@ global using Courses.Client.Managers;
 global using Lectures.Client.Managers;
 global using Students.Client.Managers;
 global using Tutors.Client.Managers;
+
+global using Students.Client.Validators;
