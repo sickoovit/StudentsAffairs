@@ -1,3 +1,5 @@
+using StudentsAffairs.MediatR;
+
 WebApplicationBuilder webApplicationBuilder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -34,7 +36,8 @@ webApplicationBuilder.Services.AddScoped<ICourseRepository, CourseRepository>();
 webApplicationBuilder.Services.AddScoped<IAssignmentRepository, AssignmentRepository>();
 webApplicationBuilder.Services.AddScoped<ILectureRepository, LectureRepository>();
 
-webApplicationBuilder.Services.AddHttpClient();
+webApplicationBuilder.Services.AddHttpClient(); 
+webApplicationBuilder.Services.AddMediatR(config=>config.RegisterServicesFromAssembly(typeof(MediatREntrypoint).Assembly));
 
 webApplicationBuilder.Services.AddScoped<IManageEntitiesService, ManageEntitiesService>();
 webApplicationBuilder.Services.AddScoped<IManageEntitiesManager,ManageEntitiesManager>();

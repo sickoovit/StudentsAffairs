@@ -15,7 +15,6 @@ namespace Students.Client.Components
 		}
 		private async Task HandleValidSubmit()
         {
-            Console.WriteLine("Ping!!");
             await StudentsManager.AddStudent(newStudent);
             newStudent = new Student();
         }

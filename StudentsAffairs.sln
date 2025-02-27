@@ -67,6 +67,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Client", "src\Shared
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SessionStorage", "src\Services\Sessions\SessionStorage.csproj", "{28706FC9-3837-43ED-8720-90E7469F67C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentsAffairs.MediatR", "StudentsAffairs.MediatR\StudentsAffairs.MediatR.csproj", "{17B161E9-8BFD-4869-98F3-A4C5042CDF1A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -161,6 +163,10 @@ Global
 		{28706FC9-3837-43ED-8720-90E7469F67C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28706FC9-3837-43ED-8720-90E7469F67C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28706FC9-3837-43ED-8720-90E7469F67C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17B161E9-8BFD-4869-98F3-A4C5042CDF1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17B161E9-8BFD-4869-98F3-A4C5042CDF1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17B161E9-8BFD-4869-98F3-A4C5042CDF1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17B161E9-8BFD-4869-98F3-A4C5042CDF1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -192,6 +198,7 @@ Global
 		{D64E9920-786B-4580-A9C1-912E763A0C05} = {28E878C2-0572-4A74-810E-51BEA77331E1}
 		{717D3A97-1C5B-4ECF-87A5-D35D986CF9BF} = {B0315A02-FE13-451E-98C9-E7AB36633533}
 		{28706FC9-3837-43ED-8720-90E7469F67C3} = {C413031E-D373-420E-BAA0-1660F5F0BDFC}
+		{17B161E9-8BFD-4869-98F3-A4C5042CDF1A} = {C413031E-D373-420E-BAA0-1660F5F0BDFC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {62155182-E670-44F0-B350-AD2DD6C815BC}

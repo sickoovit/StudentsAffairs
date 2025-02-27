@@ -1,34 +1,12 @@
-﻿using Admins.Services;
-
-namespace StudentsAffairsWASM.Auto.Services;
+﻿namespace StudentsAffairsWASM.Auto.Services;
 
 public class ManageEntitiesService : IManageEntitiesService
 {
-	private readonly IStudentRepository _studentRepository;
-	private readonly IManageAdminsService _manageAdminsService;
-	private readonly ITutorRepository _tutorRepository;
-	private readonly IAdminRepository _adminRepository;
-	private readonly IAssignmentRepository _assignmentRepository;
-	private readonly ICourseRepository _courseRepository;
-	private readonly ILectureRepository _lectureRepository;
-	private readonly ICacheService _cacheService;
+    private readonly IMediator _mediator;
 
-	public ManageEntitiesService(
-		IStudentRepository studentRepository,
-		IAdminRepository adminRepository,
-		ITutorRepository tutorRepository,
-		IAssignmentRepository assignmentRepository,
-		ICourseRepository courseRepository,
-		ILectureRepository lectureRepository,
-		ICacheService cacheService)
+	public ManageEntitiesService(IMediator mediator)
 	{
-		_studentRepository = studentRepository;
-		_adminRepository = adminRepository;
-		_tutorRepository = tutorRepository;
-		_assignmentRepository = assignmentRepository;
-		_courseRepository = courseRepository;
-		_lectureRepository = lectureRepository;
-		_cacheService = cacheService;
+		_mediator = mediator;
 	}
 
 	public async Task<AllEntitiesDTO> GetAllEntitiesAsync()
@@ -46,31 +24,27 @@ public class ManageEntitiesService : IManageEntitiesService
 			Lectures = await GetLecturesAsync()
 		};
 	}
+	public async Task<IEnumerable<Student>> GetStudentsAsync() => await _mediator.Send(new GetStudentsQuery());
 
-	public async void CacheAllEntitiesAsync()
-	{
-		await GetStudentsAsync();
-		await GetAdminsAsync();
-		await GetTutorsAsync();
-		await GetAssignmentsAsync();
-		await GetCoursesAsync();
-		await GetLecturesAsync();
-	}
-	public async Task<IEnumerable<Student>> GetStudentsAsync() =>
-		await _cacheService.GetOrAddAsync("students", _studentRepository.GetAllAsync);
+	public async Task<IEnumerable<Tutor>> GetTutorsAsync() => await _mediator.Send(new GetTutorsQuery());
 
-	public async Task<IEnumerable<Tutor>> GetTutorsAsync() =>
-		await _cacheService.GetOrAddAsync("tutors", _tutorRepository.GetAllAsync);
+    public async Task<IEnumerable<Admin>> GetAdminsAsync() => await _mediator.Send(new GetAdminsQuery());
 
-	public async Task<IEnumerable<Admin>> GetAdminsAsync() =>
-		await _cacheService.GetOrAddAsync("admins", _adminRepository.GetAllAsync);
+    public async Task<IEnumerable<Assignment>> GetAssignmentsAsync() => await _mediator.Send(new GetAssignmentsQuery());
 
-	public async Task<IEnumerable<Assignment>> GetAssignmentsAsync() =>
-		await _cacheService.GetOrAddAsync("assignments", _assignmentRepository.GetAllAsync);
+    public async Task<IEnumerable<Course>> GetCoursesAsync() =>  await _mediator.Send(new GetCoursesQuery());
 
-	public async Task<IEnumerable<Course>> GetCoursesAsync() =>
-		await _cacheService.GetOrAddAsync("courses", _courseRepository.GetAllAsync);
+    public async Task<IEnumerable<Lecture>> GetLecturesAsync() => await _mediator.Send(new GetLecturesQuery());
 
-	public async Task<IEnumerable<Lecture>> GetLecturesAsync() =>
-		await _cacheService.GetOrAddAsync("lectures", _lectureRepository.GetAllAsync);
+	public async Task<IEnumerable<Course>> UpdateCoursesAsync() => throw new NotImplementedException();
+
+	public async Task<IEnumerable<Lecture>> UpdateLecturesAsync() => throw new NotImplementedException();
+
+	public async Task<IEnumerable<Student>> UpdateStudentsAsync() => throw new NotImplementedException();
+
+	public async Task<IEnumerable<Tutor>> UpdateTutorsAsync() => throw new NotImplementedException();
+
+	public async Task<IEnumerable<Admin>> UpdateAdminsAsync() => throw new NotImplementedException();
+
+    public async Task<IEnumerable<Assignment>> UpdateAssignmentsAsync() => throw new NotImplementedException();
 }

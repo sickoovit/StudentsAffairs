@@ -3,6 +3,8 @@ global using System.Reflection;
 global using Microsoft.EntityFrameworkCore;
 global using Blazored.SessionStorage;
 global using FluentValidation;
+global using MediatR;
+global using StudentsAffairs.MediatR.Queries;
 
 global using StudentsAffairsWASM.Auto.Services;
 global using StudentsAffairsWASM.Auto.Client.DTOs;

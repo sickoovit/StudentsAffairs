@@ -3,7 +3,6 @@ namespace StudentsAffairsWASM.Auto.Services
 {
 	public interface IManageEntitiesService
 	{
-		void CacheAllEntitiesAsync();
 		Task<AllEntitiesDTO> GetAllEntitiesAsync();
 		Task<IEnumerable<Assignment>> GetAssignmentsAsync();
 		Task<IEnumerable<Course>> GetCoursesAsync();
@@ -11,6 +10,12 @@ namespace StudentsAffairsWASM.Auto.Services
 		Task<IEnumerable<Student>> GetStudentsAsync();
 		Task<IEnumerable<Tutor>> GetTutorsAsync();
 		Task<IEnumerable<Admin>> GetAdminsAsync();
+		Task<IEnumerable<Assignment>> UpdateAssignmentsAsync();
+		Task<IEnumerable<Course>> UpdateCoursesAsync();
+		Task<IEnumerable<Lecture>> UpdateLecturesAsync();
+		Task<IEnumerable<Student>> UpdateStudentsAsync();
+		Task<IEnumerable<Tutor>> UpdateTutorsAsync();
+		Task<IEnumerable<Admin>> UpdateAdminsAsync();
 
 	}
 }

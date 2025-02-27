@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="Handlers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\Domains\Admins\Admins\Admins.csproj" />
+    <ProjectReference Include="..\src\Domains\Assignments\Assignments\Assignments.csproj" />
+    <ProjectReference Include="..\src\Domains\Courses\Courses\Courses.csproj" />
+    <ProjectReference Include="..\src\Domains\Students\Students\Students.csproj" />
+    <ProjectReference Include="..\src\Domains\Tutors\Tutors\Tutors.csproj" />
+  </ItemGroup>
+
+</Project>

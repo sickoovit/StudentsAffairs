@@ -30,7 +30,9 @@ public class ManageEntitiesController : ControllerBase
 	public async Task<IEnumerable<Lecture>> GetLectures() => await ManageEntitiesService.GetLecturesAsync();
 
 	[HttpPost("students")]
-	public void AddStudent([FromBody] Student newStudent) => Console.WriteLine(newStudent);
+	public void AddStudent([FromBody] Student newStudent) {
+		ManageEntitiesService.
+		}
 	[HttpPost]
 	public void Post([FromBody] string value)
 	{
