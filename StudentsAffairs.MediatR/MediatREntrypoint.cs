@@ -1,5 +1,3 @@
 ﻿namespace StudentsAffairs.MediatR;
 
-public class MediatREntrypoint
-{
-}
+public record MediatREntrypoint;
