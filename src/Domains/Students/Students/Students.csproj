@@ -15,6 +15,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\..\..\..\StudentsAffairs.Redis\StudentsAffairs.Redis.csproj" />
 	  <ProjectReference Include="..\..\..\Shared\Shared\Shared.csproj" />
 	</ItemGroup>
 

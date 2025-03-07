@@ -1,6 +1,9 @@
 ﻿global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
+global using StudentsAffairs.Redis.Repositories;
+global using StudentsAffairs.Redis.Services;
+
 global using Lectures.Entities;
 
 global using Shared.Entities;

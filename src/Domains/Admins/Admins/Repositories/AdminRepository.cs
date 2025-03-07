@@ -1,8 +1,8 @@
 ﻿namespace Admins.Repositories;
 
-public class AdminRepository : Repository<Admin>, IAdminRepository
+public class AdminRepository : CachedRepository<Admin>, IAdminRepository
 {
-    public AdminRepository(AppDbContext context) : base(context)
+    public AdminRepository(IRepository<Admin> innerRepository, ICacheService cacheService) : base(innerRepository, cacheService)
     {
     }
 }
