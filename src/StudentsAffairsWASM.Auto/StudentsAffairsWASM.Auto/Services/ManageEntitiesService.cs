@@ -36,15 +36,15 @@ public class ManageEntitiesService : IManageEntitiesService
 
     public async Task<IEnumerable<Lecture>> GetLecturesAsync() => await _mediator.Send(new GetLecturesQuery());
 
-	public async Task<IEnumerable<Course>> UpdateCoursesAsync() => throw new NotImplementedException();
+	public  Task<IEnumerable<Course>> UpdateCoursesAsync() => throw new NotImplementedException();
 
-	public async Task<IEnumerable<Lecture>> UpdateLecturesAsync() => throw new NotImplementedException();
+	public  Task<IEnumerable<Lecture>> UpdateLecturesAsync() => throw new NotImplementedException();
 
-	public async Task<IEnumerable<Student>> UpdateStudentsAsync() => throw new NotImplementedException();
+	public  Task<IEnumerable<Student>> UpdateStudentsAsync() => throw new NotImplementedException();
 
-	public async Task<IEnumerable<Tutor>> UpdateTutorsAsync() => throw new NotImplementedException();
+	public  Task<IEnumerable<Tutor>> UpdateTutorsAsync() => throw new NotImplementedException();
 
-	public async Task<IEnumerable<Admin>> UpdateAdminsAsync() => throw new NotImplementedException();
+	public  Task<IEnumerable<Admin>> UpdateAdminsAsync() => throw new NotImplementedException();
 
-    public async Task<IEnumerable<Assignment>> UpdateAssignmentsAsync() => throw new NotImplementedException();
+    public  Task<IEnumerable<Assignment>> UpdateAssignmentsAsync() => throw new NotImplementedException();
 }

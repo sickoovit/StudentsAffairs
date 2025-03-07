@@ -1,18 +1,24 @@
 ﻿global using StudentsAffairsWASM.Auto.Components;
 global using System.Reflection;
-global using Microsoft.EntityFrameworkCore;
-global using Blazored.SessionStorage;
-global using FluentValidation;
-global using MediatR;
-global using StudentsAffairs.MediatR.Queries;
 
+global using Microsoft.EntityFrameworkCore;
+
+global using FluentValidation;
+global using Blazored.SessionStorage;
+global using MediatR;
+
+global using StudentsAffairs.MediatR;
+global using StudentsAffairs.MediatR.Queries;
+global using StudentsAffairs.Redis.Services;
+global using StudentsAffairs.Redis.Repositories;
+
+global using StudentsAffairsWASM.Auto.Helpers;
 global using StudentsAffairsWASM.Auto.Services;
 global using StudentsAffairsWASM.Auto.Client.DTOs;
 global using StudentsAffairsWASM.Auto.Client.Managers;
 
-global using Cache;
-
 global using Shared.Data;
+global using Shared.Repositories;
 
 global using Admins.Entities;
 global using Assignments.Entities;

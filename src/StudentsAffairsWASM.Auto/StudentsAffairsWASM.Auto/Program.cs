@@ -1,78 +1,34 @@
-using StudentsAffairs.MediatR;
+var builder = WebApplication.CreateBuilder(args);
 
-WebApplicationBuilder webApplicationBuilder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddUserSecrets<Program>();
 
-// Add services to the container.
-webApplicationBuilder.Services.AddRazorComponents()
-	.AddInteractiveServerComponents()
-	.AddInteractiveWebAssemblyComponents();
+builder.Services.AddOtherServices()
+                .AddAppDbContext(builder.Configuration)
+                .AddRedisCache(builder.Configuration)
+                .AddRepositories()
+                .AddManagers();
 
-webApplicationBuilder.Services.AddControllers();
-webApplicationBuilder.Services.AddBlazoredSessionStorage();
+var app = builder.Build();
 
-webApplicationBuilder.Configuration.AddUserSecrets<Program>();
-
-string connectionStringAppDbConfigurationKey = "AppDbConnectionString";
-string connectionStringAppDb = webApplicationBuilder.Configuration[connectionStringAppDbConfigurationKey] ??
-    throw new ArgumentNullException(
-        paramName: "connectionStringAppDbConfigurationKey",
-        message: "Connection String Couldn't Be Resolved. Configuration Key may be not valid"
-    );
-
-webApplicationBuilder.Services.AddDbContext<AppDbContext>(options =>
-														  options.UseSqlServer(connectionStringAppDb)
-															     .EnableDetailedErrors()
-                                                                 .EnableSensitiveDataLogging()
-                                                                 .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking),
-                                                                 ServiceLifetime.Scoped);
-
-webApplicationBuilder.Services.AddSingleton<ICacheService, CacheService>();
-
-webApplicationBuilder.Services.AddScoped<IStudentRepository, StudentRepository>();
-webApplicationBuilder.Services.AddScoped<IAdminRepository, AdminRepository>();
-webApplicationBuilder.Services.AddScoped<ITutorRepository, TutorRepository>();
-
-webApplicationBuilder.Services.AddScoped<ICourseRepository, CourseRepository>();
-webApplicationBuilder.Services.AddScoped<IAssignmentRepository, AssignmentRepository>();
-webApplicationBuilder.Services.AddScoped<ILectureRepository, LectureRepository>();
-
-webApplicationBuilder.Services.AddHttpClient(); 
-webApplicationBuilder.Services.AddMediatR(config=>config.RegisterServicesFromAssembly(typeof(MediatREntrypoint).Assembly));
-
-webApplicationBuilder.Services.AddScoped<IManageEntitiesService, ManageEntitiesService>();
-webApplicationBuilder.Services.AddScoped<IManageEntitiesManager,ManageEntitiesManager>();
-webApplicationBuilder.Services.AddScoped<IAdminsManager, AdminsManager>();
-webApplicationBuilder.Services.AddScoped<IAssignmentsManager,AssignmentsManager>();
-webApplicationBuilder.Services.AddScoped<ICoursesManager, CoursesManager>();
-webApplicationBuilder.Services.AddScoped<ILecturesManager, LecturesManager>();
-webApplicationBuilder.Services.AddScoped<IStudentsManager, StudentsManager>();
-webApplicationBuilder.Services.AddScoped<ITutorsManager, TutorsManager>();
-
-WebApplication webApplication = webApplicationBuilder.Build();
-
-// Configure the HTTP request pipeline.
-if (webApplication.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
-	webApplication.UseWebAssemblyDebugging();
+    app.UseWebAssemblyDebugging();
 }
 else
 {
-	webApplication.UseExceptionHandler("/Error", createScopeForErrors: true);
-	webApplication.UseHsts();
+    app.UseExceptionHandler("/Error", createScopeForErrors: true);
+    app.UseHsts();
 }
 
-webApplication.UseHttpsRedirection();
+app.UseHttpsRedirection();
+app.UseCors();
+app.MapControllers();
+app.UseStaticFiles();
+app.UseAntiforgery();
 
-webApplication.UseCors();
+app.MapRazorComponents<App>()
+    .AddInteractiveServerRenderMode()
+    .AddInteractiveWebAssemblyRenderMode()
+    .AddAdditionalAssemblies(typeof(StudentsAffairsWASM.Auto.Client._Imports).Assembly);
 
-webApplication.MapControllers();
-
-webApplication.UseStaticFiles();
-webApplication.UseAntiforgery();
-
-webApplication.MapRazorComponents<App>()
-	.AddInteractiveServerRenderMode()
-	.AddInteractiveWebAssemblyRenderMode()
-	.AddAdditionalAssemblies(typeof(StudentsAffairsWASM.Auto.Client._Imports).Assembly);
-
-webApplication.Run();
+app.Run();
